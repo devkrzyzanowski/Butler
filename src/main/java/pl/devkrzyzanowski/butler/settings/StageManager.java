@@ -5,10 +5,9 @@
  */
 package pl.devkrzyzanowski.butler.settings;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,10 +23,23 @@ public class StageManager {
     private ResourceBundle bundle;
     private FXMLLoader lLoader;
 
+    /**
+     *
+     */
     public StageManager() {
-        bundle = ResourceBundle.getBundle("resources.bundles.messages", new Locale("pl"));
+//        try {
+        bundle = ResourceBundle.getBundle("bundles.messages", Locale.getDefault());
+//        } catch (MissingResourceException e) {
+//            bundle = null;
+//            System.err.println(e);
+//        }
     }
     
+    /**
+     *
+     * @param stage
+     * @param fxml
+     */
     public void newStage(Stage stage, String fxml) {
         Scene scene = new Scene(getParent(fxml));
         stage.setScene(scene);
@@ -35,6 +47,11 @@ public class StageManager {
         stage.show();
     }
     
+    /**
+     *
+     * @param stage
+     * @param fxml
+     */
     public void changeStage(Stage stage, String fxml) {
         Scene scene = new Scene(getParent(fxml), stage.getScene().getWidth(), stage.getScene().getHeight());
         stage.setScene(scene);
@@ -42,6 +59,11 @@ public class StageManager {
         stage.show();
     }
     
+    /**
+     *
+     * @param owner
+     * @param fxml
+     */
     public void addModalStage(Window owner, String fxml) {
         Scene scene = new Scene(getParent(fxml));
         Stage stage = new Stage();
