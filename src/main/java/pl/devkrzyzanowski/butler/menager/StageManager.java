@@ -112,7 +112,8 @@ public class StageManager {
      *
      * @param owner
      * @param fxml
-     * @return 
+     * @return 0 on succes, 1 if stage is null, 2 if fxml is null, 3 if stage 
+     * and fxml is null
      */
     public Integer addModalStage(Window owner, String fxml) {
         Integer flag = 0;
@@ -151,6 +152,10 @@ public class StageManager {
             root = null;
         }
         return root;
+    }
+    
+    public FXMLLoader getLoader() {
+        return lLoader;
     }
     
 }

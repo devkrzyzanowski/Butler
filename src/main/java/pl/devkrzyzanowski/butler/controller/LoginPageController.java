@@ -18,10 +18,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import pl.devkrzyzanowski.butler.MainApp;
 
 /**
  *
- * @author uwxyy
+ * @author MichalKrzyzanowski
  */
 public class LoginPageController {
 
@@ -33,17 +34,14 @@ public class LoginPageController {
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/butler/view/dialogs/addNewDataBaseStructure.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+        MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
+                .getScene().getWindow(), "/butler/view/dialogs/addNewDataBaseStructure.fxml");
     }
     
-    @FXML private void choser(ActionEvent event) {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
+    @FXML private void openDirectoryChooseDialog(ActionEvent event) {
+        DirectoryChooser dch = new DirectoryChooser();
         File selectedDirectory = 
-                directoryChooser.showDialog(((Node) event.getSource()).getScene().getWindow());
+                dch.showDialog(((Node) event.getSource()).getScene().getWindow());
                  
         if(selectedDirectory == null) {
             dbNameTextField.setText("No Directory selected");
@@ -51,16 +49,14 @@ public class LoginPageController {
             dbNameTextField.setText(selectedDirectory.getAbsolutePath());
         }
     }
-    @FXML private void handleLoginButton(ActionEvent event) throws IOException {   
-    
-    }
-//    @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-//        butler.Butler.stageManager.changeStage((Stage) ((Node) event.getSource())
-//                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
-//        connectingToDataBaseController ctdbc = butler.Butler.stageManager.getLoader().getController();
-//        ctdbc.initialize(butler.Butler.stageManager.getLoader().getLocation(), loginTextField.getText(),
+
+    @FXML private void handleLoginButton(ActionEvent event) throws IOException {
+        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
+                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
+//        connectingToDataBaseController ctdbc = MainApp.stageManager.getLoader().getController();
+//        ctdbc.initialize(MainApp.stageManager.getLoader().getLocation(), loginTextField.getText(),
 //                passwordTextField.getText(), dbNameTextField.getText());                    
-//    }
+    }
 
     @FXML void showRegulations() {
 
