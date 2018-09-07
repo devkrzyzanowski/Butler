@@ -42,7 +42,6 @@ public class LoginPageController {
         DirectoryChooser dch = new DirectoryChooser();
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());
-                 
         if(selectedDirectory == null) {
             dbNameTextField.setText("No Directory selected");
         } else {
