@@ -20,13 +20,13 @@ public class MainApp extends Application {
         stageManager = new StageManager(stage, "/fxml/loginPage.fxml");
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+//        Scene scene = new Scene(root);
+//        scene.getStylesheets().add("/styles/Styles.css");
+//        
+//        stage.setTitle("JavaFX and Maven");
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     /**
