@@ -65,7 +65,7 @@
                   </Label>
                   <Hyperlink fx:id="addDataBaseStructureButton" layoutY="215.0" onAction="#addDataBaseStructure" text="Dodaj nową bazę" textFill="#388df4" />
                   <TextField fx:id="dbNameTextField" layoutX="129.0" layoutY="10.0" prefHeight="25.0" prefWidth="190.0" text="C:\Users\MichalKrzyzanowski\Documents\GitHub\Butler\NetBeans\Butler\InstallTest" />
-                  <Button fx:id="selectDBButton" layoutX="211.0" layoutY="35.0" mnemonicParsing="false" onAction="#choser" prefHeight="19.0" prefWidth="108.0" text="Wybierz bazę" />
+                  <Button fx:id="selectDBButton" layoutX="211.0" layoutY="35.0" mnemonicParsing="false" onAction="#openDirectoryChooseDialog" prefHeight="19.0" prefWidth="108.0" text="Wybierz bazę" />
                   <CheckBox layoutX="170.0" layoutY="95.0" mnemonicParsing="false" scaleShape="false" text="Zapamietaj użytkownika" />
                </children>
             </AnchorPane>
