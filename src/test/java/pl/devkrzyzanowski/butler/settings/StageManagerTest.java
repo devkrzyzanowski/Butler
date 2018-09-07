@@ -5,6 +5,7 @@
  */
 package pl.devkrzyzanowski.butler.settings;
 
+import pl.devkrzyzanowski.butler.menager.StageManager;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.junit.After;
@@ -46,7 +47,7 @@ public class StageManagerTest {
         System.out.println("newStage");
         Stage stage = null;
         String fxml = "";
-        StageManager instance = new StageManager();
+        StageManager instance = new StageManager(stage, fxml);
         instance.newStage(stage, fxml);
     }
 
@@ -58,7 +59,7 @@ public class StageManagerTest {
         System.out.println("changeStage");
         Stage stage = null;
         String fxml = "";
-        StageManager instance = new StageManager();
+        StageManager instance = new StageManager(stage, fxml);
         instance.changeStage(stage, fxml);
     }
 
@@ -68,9 +69,10 @@ public class StageManagerTest {
     @Test
     public void testAddModalStage() {
         System.out.println("addModalStage");
+        Stage stage = null;
         Window owner = null;
         String fxml = "";
-        StageManager instance = new StageManager();
+        StageManager instance = new StageManager(stage, fxml);
         instance.addModalStage(owner, fxml);
     }
     

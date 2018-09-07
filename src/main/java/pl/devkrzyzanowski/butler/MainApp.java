@@ -1,17 +1,25 @@
 package pl.devkrzyzanowski.butler;
 
+import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.devkrzyzanowski.butler.menager.StageManager;
 
 
 public class MainApp extends Application {
-
+    public static StageManager stageManager;
+    protected final Logger logger = Logger.getLogger(getClass().getName());
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
+        stageManager = new StageManager(stage, "/fxml/loginPage.fxml");
+        
+        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
