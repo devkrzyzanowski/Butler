@@ -33,9 +33,9 @@ public class LoginPageController {
 
     }   
 
-    @FXML private void addDataBaseStructure(ActionEvent event) throws IOException {
+    @FXML private void addDataBaseStructure(ActionEvent event) {
         MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/butler/view/dialogs/addNewDataBaseStructure.fxml");
+                .getScene().getWindow(), "/fxml/addNewDataBaseStructure.fxml"); // TODO CHANGE NAME
     }
     
     @FXML private void openDirectoryChooseDialog(ActionEvent event) {
