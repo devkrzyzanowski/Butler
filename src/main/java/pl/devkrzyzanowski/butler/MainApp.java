@@ -3,9 +3,6 @@ package pl.devkrzyzanowski.butler;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.menager.StageManager;
 
