@@ -36,7 +36,7 @@
       </AnchorPane>
       <AnchorPane layoutX="200.0" prefHeight="375.0" prefWidth="400.0">
          <children>
-            <AnchorPane layoutY="120.0" prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #d3d6cf;">
+            <AnchorPane layoutY="120.0" prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #d3d6cf;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
                <children>
                   <Label layoutX="87.0" layoutY="74.0" text="Login :">
                      <padding>

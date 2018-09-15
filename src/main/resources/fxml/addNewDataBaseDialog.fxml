@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.addNewDataBaseStructureController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.addNewDataBaseDialogController">
    <children>
       <Button fx:id="cancelButton" layoutX="540.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelAction" text="Anuluj" />
       <Button fx:id="addButton" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" onAction="#addStructure" prefHeight="25.0" prefWidth="121.0" text="Dodaj" />
       <Hyperlink layoutX="14.0" layoutY="227.0" text="Pomoc" />
-      <Button fx:id="testConnectionButton" layoutX="224.0" layoutY="175.0" mnemonicParsing="false" onAction="#testConnection" text="Sprawdz połączenie" />
+      <Button fx:id="testConnectionButton" layoutX="224.0" layoutY="175.0" mnemonicParsing="false" onAction="#testConnection" text="Sprawdź połączenie" />
       <Label fx:id="testConnectionResult" layoutX="355.0" layoutY="179.0" text="wynik testu" textFill="#555555" />
       <GridPane layoutX="14.0" layoutY="14.0" prefHeight="153.0" prefWidth="526.0">
         <columnConstraints>
@@ -39,9 +39,9 @@
             <Label text="Hasło : " textFill="#555555" GridPane.rowIndex="3" />
             <Label text="Adres bazy :" textFill="#555555" />
             <Button fx:id="selectDirectoryButton" mnemonicParsing="false" onAction="#selectDirectory" prefHeight="25.0" prefWidth="255.0" text="Wybierz miejsce docelowe" GridPane.columnIndex="2" />
-            <TextField fx:id="directoryTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="dbDirectoryTextField" GridPane.columnIndex="1" />
             <Label text="Potwierdz haslo :" GridPane.rowIndex="4" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>
