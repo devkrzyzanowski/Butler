@@ -49,14 +49,16 @@ public class addNewDataBaseDialogController implements Initializable {
     private Button selectDirectoryButton;
     @FXML
     private TextField directoryTextField;
+    
+    private ResourceBundle rb;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.rb = rb;
         dbNameTextField.textProperty().addListener(new InvalidationListener() {
-
-
             @Override
             public void invalidated(Observable observable) {
                 if (validePassword(dbNameTextField.getText())) {
@@ -87,7 +89,7 @@ public class addNewDataBaseDialogController implements Initializable {
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedDirectory == null) {
-            dbDirectoryTextField.setText("No Directory selected");
+            dbDirectoryTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
             dbDirectoryTextField.setText(selectedDirectory.getAbsolutePath());
         }

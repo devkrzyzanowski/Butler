@@ -10,10 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
@@ -44,7 +41,7 @@ public class LoginPageController {
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedDirectory == null) {
-            dbNameTextField.setText("No Directory selected");
+            dbNameTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
             dbNameTextField.setText(selectedDirectory.getAbsolutePath());
         }
@@ -59,17 +56,6 @@ public class LoginPageController {
     }
 
     @FXML void showRegulations() {
-
+        //TODO : INIT
     }  
-    
-    private void setPage(ActionEvent event, String path) throws IOException{
-        ResourceBundle bundle = ResourceBundle.getBundle("resources.bundles.messages");
-        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/butler/view/"+path+".fxml"), bundle);
-
-        Parent root = fXMLLoader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
 }
