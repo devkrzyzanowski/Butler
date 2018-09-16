@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.Utils.Validator;
 
 /**
  * FXML Controller class
@@ -61,14 +62,13 @@ public class addNewDataBaseDialogController implements Initializable {
         dbNameTextField.textProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
-                if (validePassword(dbNameTextField.getText())) {
+                if (Validator.lengthBetween(dbNameTextField.getText(), 6, 12) == 0) {
                  dbNameTextField.setStyle("-fx-border-color: none;");   
                 } else {
                  dbNameTextField.setStyle("-fx-border-color: red;");
                 }
             }
         });
-
     }    
 
     @FXML
