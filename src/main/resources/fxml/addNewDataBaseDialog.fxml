@@ -38,7 +38,7 @@
             <Label text="%name.dbUser" textFill="#555555" GridPane.rowIndex="2" />
             <Label text="%name.dbPassword" textFill="#555555" GridPane.rowIndex="3" />
             <Label text="%name.dbAddress" textFill="#555555" />
-            <Button fx:id="selectDirectoryButton" mnemonicParsing="false" onAction="#selectDirectory" prefHeight="25.0" prefWidth="255.0" text="%name.chooseDestination" GridPane.columnIndex="2" />
+            <Button fx:id="selectDirectoryButton" mnemonicParsing="false" onAction="#openDirectoryChooseDialog" prefHeight="25.0" prefWidth="255.0" text="%name.chooseDestination" GridPane.columnIndex="2" />
             <TextField fx:id="dbDirectoryTextField" GridPane.columnIndex="1" />
             <Label text="%name.dbCheckPassword" GridPane.rowIndex="4" />
             <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />

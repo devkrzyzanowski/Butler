@@ -8,6 +8,8 @@ package pl.devkrzyzanowski.butler.controller;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,7 +54,19 @@ public class addNewDataBaseDialogController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        dbNameTextField.textProperty().addListener(new InvalidationListener() {
+
+
+            @Override
+            public void invalidated(Observable observable) {
+                if (validePassword(dbNameTextField.getText())) {
+                 dbNameTextField.setStyle("-fx-border-color: none;");   
+                } else {
+                 dbNameTextField.setStyle("-fx-border-color: red;");
+                }
+            }
+        });
+
     }    
 
     @FXML
@@ -78,5 +92,12 @@ public class addNewDataBaseDialogController implements Initializable {
             dbDirectoryTextField.setText(selectedDirectory.getAbsolutePath());
         }
     }
-    
+    // TODO: change String to char array
+    private boolean validePassword(String data) {
+        if (data.length() < 5) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -28,14 +28,15 @@ public class LoginPageController {
 
     @FXML private TextField loginTextField, dbNameTextField;
     @FXML private PasswordField passwordTextField;
+    private ResourceBundle rb;
 
     public void initialize(URL url, ResourceBundle rb) {
-
+        this.rb = rb;
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
         MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/fxml/addNewDataBaseStructure.fxml"); // TODO CHANGE NAME
+                .getScene().getWindow(), "/fxml/addNewDataBaseDialog.fxml");
     }
     
     @FXML private void openDirectoryChooseDialog(ActionEvent event) {
