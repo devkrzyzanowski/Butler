@@ -59,16 +59,7 @@ public class addNewDataBaseDialogController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
-        dbNameTextField.textProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                if (Validator.lengthBetween(dbNameTextField.getText(), 6, 12) == 0) {
-                 dbNameTextField.setStyle("-fx-border-color: none;");   
-                } else {
-                 dbNameTextField.setStyle("-fx-border-color: red;");
-                }
-            }
-        });
+        initValidators();
     }    
 
     @FXML
@@ -94,12 +85,25 @@ public class addNewDataBaseDialogController implements Initializable {
             dbDirectoryTextField.setText(selectedDirectory.getAbsolutePath());
         }
     }
-    // TODO: change String to char array
-    private boolean validePassword(String data) {
-        if (data.length() < 5) {
-            return false;
-        } else {
-            return true;
-        }
+
+    private void initValidators() {
+        dbUserTextField.textProperty().addListener((observable) -> {
+                if (Validator.lengthBetween(dbUserTextField.getText(), 6, 12) == 0) {
+                 dbUserTextField.setStyle("-fx-border-color: none;");   
+                } else {
+                 dbUserTextField.setStyle("-fx-border-color: red;");
+                }
+            }
+       );
+        
+        dbUserTextField.textProperty().addListener((observable) -> {
+                if (Validator.lengthBetween(dbUserTextField.getText(), 6, 12) == 0) {
+                 dbUserTextField.setStyle("-fx-border-color: none;");   
+                } else {
+                 dbUserTextField.setStyle("-fx-border-color: red;");
+                }
+            }
+       );
+
     }
 }
