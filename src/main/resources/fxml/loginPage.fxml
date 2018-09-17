@@ -20,7 +20,7 @@
       <AnchorPane layoutX="200.0" layoutY="80.0" prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #d3d6cf;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="74.0" prefHeight="17.0" prefWidth="120.0" text="%loginPage.loginLabel" textAlignment="RIGHT" AnchorPane.rightAnchor="280.0" />
-            <Button fx:id="button" contentDisplay="TOP" disable="true" layoutX="265.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333333; -fx-background-radius: 0;" text="%loginPage.loginButton" textFill="#d0d0d0" textOverrun="CLIP" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0">
+            <Button fx:id="loginButton" contentDisplay="TOP" layoutX="265.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333333; -fx-background-radius: 0;" text="%loginPage.loginButton" textFill="#d0d0d0" textOverrun="CLIP" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -61,12 +61,12 @@
       </AnchorPane>
       <AnchorPane layoutY="375.0" prefHeight="25.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1f1f1f;">
          <children>
-            <Label layoutX="287.0" layoutY="4.0" text="%app.version" textFill="#8d8d8d" AnchorPane.rightAnchor="5.0">
+            <Label alignment="CENTER_RIGHT" layoutX="287.0" layoutY="4.0" text="%app.version" textAlignment="RIGHT" textFill="#8d8d8d" AnchorPane.rightAnchor="5.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <padding>
-                  <Insets left="6.0" right="6.0" />
+                  <Insets left="6.0" />
                </padding>
             </Label>
             <Hyperlink fx:id="regulationsButton" layoutY="3.0" onAction="#showRegulations" text="%footer.termsOfUse" textFill="#388df4">

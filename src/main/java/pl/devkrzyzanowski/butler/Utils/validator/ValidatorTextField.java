@@ -5,6 +5,7 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
+import java.util.logging.Level;
 import javafx.scene.control.TextField;
 import static pl.devkrzyzanowski.butler.Utils.validator.Validator.lengthBetween;
 
@@ -17,13 +18,18 @@ public class ValidatorTextField extends Validator{
     public ValidatorTextField(){}
     
     public int valideTextField(TextField tf) {
-        System.out.println(tf.getText());
-        if (lengthBetween(tf.getText(), 6, 12) == 0) {
-                 tf.setStyle("-fx-border-color: none;");   
-                } else {
-                 tf.setStyle("-fx-border-color: red;");
+        int flag = lengthBetween(tf.getText(), 6, 12);
+        if (flag == 0) {
+            tf.setStyle("-fx-border-color: none;");
+        } else {
+            tf.setStyle("-fx-border-color: red;");
+            switch (flag) {
+                case 1 : logger.log(Level.WARNING, "id={0} text too small!", tf.getId()); break;
+                case 2: logger.log(Level.WARNING, "text too long!"); break;
+                default : logger.log(Level.WARNING, "error {0}", flag); break;
+            }
         }
-        return 1;
+        return flag;
     }
     
 }

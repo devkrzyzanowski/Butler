@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
@@ -27,6 +28,7 @@ public class LoginPageController implements Initializable {
 
     @FXML private TextField loginTextField, dbNameTextField;
     @FXML private PasswordField passwordTextField;
+    @FXML private Button loginButton;
     private ResourceBundle rb;
 
     @Override
@@ -52,8 +54,12 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
+        ValidatorTextField vtf = new ValidatorTextField();
+        System.out.println(vtf.valideTextField(loginTextField));
+//        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
+//                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
+        
+        
 //        connectingToDataBaseController ctdbc = MainApp.stageManager.getLoader().getController();
 //        ctdbc.initialize(MainApp.stageManager.getLoader().getLocation(), loginTextField.getText(),
 //                passwordTextField.getText(), dbNameTextField.getText());                    
