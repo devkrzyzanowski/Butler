@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
-import pl.devkrzyzanowski.butler.Utils.Validator;
+import pl.devkrzyzanowski.butler.Utils.validator.Validator;
 
 /**
  * FXML Controller class

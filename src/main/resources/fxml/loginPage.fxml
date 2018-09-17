@@ -20,7 +20,7 @@
       <AnchorPane layoutX="200.0" layoutY="80.0" prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #d3d6cf;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
             <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="74.0" prefHeight="17.0" prefWidth="120.0" text="%loginPage.loginLabel" textAlignment="RIGHT" AnchorPane.rightAnchor="280.0" />
-            <Button fx:id="button" contentDisplay="TOP" layoutX="265.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333333; -fx-background-radius: 0;" text="%loginPage.loginButton" textFill="#d0d0d0" textOverrun="CLIP" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0">
+            <Button fx:id="button" contentDisplay="TOP" disable="true" layoutX="265.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333333; -fx-background-radius: 0;" text="%loginPage.loginButton" textFill="#d0d0d0" textOverrun="CLIP" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -28,8 +28,8 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <TextField fx:id="loginTextField" layoutX="129.0" layoutY="70.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-radius: 0;" text="admin" />
-            <PasswordField fx:id="passwordTextField" layoutX="129.0" layoutY="124.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-radius: 0;" text="password">
+            <TextField fx:id="loginTextField" layoutX="129.0" layoutY="70.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-radius: 0;" />
+            <PasswordField fx:id="passwordTextField" layoutX="129.0" layoutY="124.0" prefHeight="25.0" prefWidth="190.0" style="-fx-background-radius: 0;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -39,7 +39,7 @@
             <Hyperlink fx:id="addDataBaseStructureButton" layoutY="215.0" onAction="#addDataBaseStructure" text="%loginPage.addNewDatabase" textFill="#388df4" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" />
             <TextField fx:id="dbNameTextField" layoutX="130.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" text="C:\Users\MichalKrzyzanowski\Documents\GitHub\Butler\NetBeans\Butler\InstallTest" />
             <Button fx:id="selectDBButton" layoutX="281.0" layoutY="35.0" mnemonicParsing="false" onAction="#openDirectoryChooseDialog" prefHeight="20.0" prefWidth="120.0" text="%loginPage.selectDatabase" AnchorPane.rightAnchor="10.0" />
-            <CheckBox layoutX="170.0" layoutY="95.0" mnemonicParsing="false" scaleShape="false" text="%loginPage.rememberLogin" AnchorPane.rightAnchor="81.0" />
+            <CheckBox disable="true" layoutX="170.0" layoutY="95.0" mnemonicParsing="false" scaleShape="false" text="%loginPage.rememberLogin" AnchorPane.rightAnchor="81.0" />
          </children>
       </AnchorPane>
       <AnchorPane maxHeight="375.0" maxWidth="200.0" minHeight="375.0" minWidth="200.0" prefHeight="375.0" prefWidth="200.0" style="-fx-background-color: #444444;">
@@ -61,7 +61,7 @@
       </AnchorPane>
       <AnchorPane layoutY="375.0" prefHeight="25.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1f1f1f;">
          <children>
-            <Label layoutX="287.0" layoutY="4.0" text="Version 0.0.0" textFill="#8d8d8d" AnchorPane.rightAnchor="5.0">
+            <Label layoutX="287.0" layoutY="4.0" text="%app.version" textFill="#8d8d8d" AnchorPane.rightAnchor="5.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -69,15 +69,10 @@
                   <Insets left="6.0" right="6.0" />
                </padding>
             </Label>
-            <Hyperlink fx:id="regulationsButton" layoutY="3.0" onAction="#showRegulations" text="Regulamin" textFill="#388df4">
+            <Hyperlink fx:id="regulationsButton" layoutY="3.0" onAction="#showRegulations" text="%footer.termsOfUse" textFill="#388df4">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <padding>
-                  <Insets left="6.0" />
-               </padding>
-            </Hyperlink>
-            <Hyperlink layoutX="65.0" layoutY="3.0" text="OWU" textFill="#388df4">
                <padding>
                   <Insets left="6.0" />
                </padding>
