@@ -10,25 +10,29 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Utils.validator.ValidatorTextField;
 
 /**
  *
  * @author MichalKrzyzanowski
  */
-public class LoginPageController {
+public class LoginPageController implements Initializable {
 
     @FXML private TextField loginTextField, dbNameTextField;
     @FXML private PasswordField passwordTextField;
     private ResourceBundle rb;
 
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
+        initValidators();
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
@@ -58,4 +62,14 @@ public class LoginPageController {
     @FXML void showRegulations() {
         //TODO : INIT
     }  
+
+    
+    private void initValidators() {
+        loginTextField.textProperty().addListener((observable) -> {
+            new ValidatorTextField().valideTextField(loginTextField);
+        });
+        passwordTextField.textProperty().addListener((observable) -> {
+            new ValidatorTextField().valideTextField(passwordTextField);
+        });
+    }
 }
