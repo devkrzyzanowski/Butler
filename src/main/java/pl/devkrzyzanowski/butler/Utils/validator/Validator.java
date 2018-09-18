@@ -5,7 +5,6 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**

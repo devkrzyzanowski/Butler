@@ -23,11 +23,6 @@ public class ValidatorTextField extends Validator{
             tf.setStyle("-fx-border-color: none;");
         } else {
             tf.setStyle("-fx-border-color: red;");
-            switch (flag) {
-                case 1 : logger.log(Level.WARNING, "id={0} text too small!", tf.getId()); break;
-                case 2: logger.log(Level.WARNING, "text too long!"); break;
-                default : logger.log(Level.WARNING, "error {0}", flag); break;
-            }
         }
         return flag;
     }

@@ -33,7 +33,7 @@ public class addNewDataBaseDialogController implements Initializable {
     @FXML
     private Button testConnectionButton;
     @FXML
-    private Label testConnectionResult;
+    private Label testConnectionResult, dbUrlLabel;
     @FXML
     private TextField dbDirectoryTextField;    
     @FXML
@@ -50,6 +50,8 @@ public class addNewDataBaseDialogController implements Initializable {
     private TextField directoryTextField;
     
     private ResourceBundle rb;
+    private String dbDir = "";
+    private String dbName ="";
     
     /**
      * Initializes the controller class.
@@ -80,8 +82,14 @@ public class addNewDataBaseDialogController implements Initializable {
         if(selectedDirectory == null) {
             dbDirectoryTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
-            dbDirectoryTextField.setText(selectedDirectory.getAbsolutePath());
+            dbDir = selectedDirectory.getAbsolutePath();
+            
+            dbDirectoryTextField.setText(dbDir);
         }
+    }
+    
+    private void updatedbUrlLabel() {
+        dbUrlLabel.setText(dbDirectoryTextField.getText() + "\'" + dbNameTextField.getText());
     }
 
     private void initValidators() {
@@ -90,6 +98,12 @@ public class addNewDataBaseDialogController implements Initializable {
         });
         dbNameTextField.textProperty().addListener((observable) -> {
             new ValidatorTextField().valideTextField(dbNameTextField);
-        });        
+        });
+        dbDirectoryTextField.textProperty().addListener((observable) -> {
+            updatedbUrlLabel();
+        }); 
+        dbNameTextField.textProperty().addListener((observable) -> {
+            updatedbUrlLabel();
+        }); 
     }
 }

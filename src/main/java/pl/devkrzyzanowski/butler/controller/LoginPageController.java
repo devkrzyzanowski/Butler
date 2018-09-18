@@ -34,7 +34,6 @@ public class LoginPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
-        initValidators();
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
@@ -55,7 +54,14 @@ public class LoginPageController implements Initializable {
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
         ValidatorTextField vtf = new ValidatorTextField();
-        System.out.println(vtf.valideTextField(loginTextField));
+        int flag = 0;
+        flag += vtf.valideTextField(loginTextField);
+        flag += vtf.valideTextField(passwordTextField);
+        if (flag != 0) {
+            initValidators();
+        }
+        
+        System.out.println(flag);
 //        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
 //                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
         
