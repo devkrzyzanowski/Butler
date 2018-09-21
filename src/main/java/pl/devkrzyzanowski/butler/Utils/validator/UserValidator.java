@@ -5,21 +5,23 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
-import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.scene.control.TextField;
-import static pl.devkrzyzanowski.butler.Utils.validator.Validator.lengthBetween;
 
 /**
  *
  * @author Admin
  */
-public class ValidatorTextField extends Validator{
+public class UserValidator {
     
-    public ValidatorTextField(){}
+    public UserValidator(){}
     
-    public int valideTextField(TextField tf) {
-        int flag = lengthBetween(tf.getText(), 6, 12);
-        if (flag == 0) {
+    public int valide(TextField tf) {
+        int flag = 0;
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{6,}");
+        Matcher matcher = pattern.matcher(tf.getText());
+        if (matcher.matches() == true) {
             tf.setStyle("-fx-border-color: none;");
         } else {
             tf.setStyle("-fx-border-color: red;");
@@ -27,4 +29,5 @@ public class ValidatorTextField extends Validator{
         return flag;
     }
     
+
 }

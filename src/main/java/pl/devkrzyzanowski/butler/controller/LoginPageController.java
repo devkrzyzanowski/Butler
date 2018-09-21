@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
-import pl.devkrzyzanowski.butler.Utils.validator.ValidatorTextField;
+import pl.devkrzyzanowski.butler.Utils.validator.TextFieldValidator;
 
 /**
  *
@@ -53,10 +53,10 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-        ValidatorTextField vtf = new ValidatorTextField();
+        TextFieldValidator vtf = new TextFieldValidator();
         int flag = 0;
-        flag += vtf.valideTextField(loginTextField);
-        flag += vtf.valideTextField(passwordTextField);
+        flag += vtf.valide(loginTextField);
+        flag += vtf.valide(passwordTextField);
         if (flag != 0) {
             initValidators();
         }
@@ -78,10 +78,10 @@ public class LoginPageController implements Initializable {
     
     private void initValidators() {
         loginTextField.textProperty().addListener((observable) -> {
-            new ValidatorTextField().valideTextField(loginTextField);
+            new TextFieldValidator().valide(loginTextField);
         });
         passwordTextField.textProperty().addListener((observable) -> {
-            new ValidatorTextField().valideTextField(passwordTextField);
+            new TextFieldValidator().valide(passwordTextField);
         });
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -16,13 +17,12 @@
       <Button fx:id="cancelButton" layoutX="540.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelAction" text="%name.cancel" />
       <Button fx:id="addButton" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" onAction="#addStructure" prefHeight="25.0" prefWidth="121.0" text="%name.add" />
       <Hyperlink layoutX="14.0" layoutY="227.0" text="%name.help" />
-      <Button fx:id="testConnectionButton" layoutX="64.0" layoutY="215.0" mnemonicParsing="false" onAction="#testConnection" text="%name.checkConnection" />
-      <Label fx:id="testConnectionResult" layoutX="176.0" layoutY="218.0" text="%name.checkConnectionResult" textFill="#555555" />
       <GridPane layoutX="14.0" layoutY="7.0" prefHeight="160.0" prefWidth="575.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="240.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="213.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="141.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.0" minWidth="10.0" prefWidth="219.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="205.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -40,7 +40,7 @@
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbUser" textFill="#555555" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbPassword" textFill="#555555" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="115.0" text="%createDatabase.dbDir" textAlignment="RIGHT" textFill="#555555" />
-            <Button fx:id="selectDirectoryButton" mnemonicParsing="false" onAction="#openDirectoryChooseDialog" text="%createDatabase.chooseDestination" GridPane.columnIndex="2">
+            <Button fx:id="selectDirectoryButton" mnemonicParsing="false" onAction="#openDirectoryChooseDialog" text="%createDatabase.chooseDestination" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
@@ -50,6 +50,51 @@
             <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.url" GridPane.rowIndex="2" />
             <Label fx:id="dbUrlLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <FontAwesomeIconView fill="LIME" glyphName="CHECK" layoutX="6.0" layoutY="21.0" size="22" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <children>
+                  <FontAwesomeIconView layoutX="10.0" layoutY="18.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <FontAwesomeIconView layoutX="10.0" layoutY="17.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <FontAwesomeIconView glyphName="GEAR" layoutX="10.0" layoutY="17.0" />
+               </children>
+            </Pane>
          </children>
       </GridPane>
    </children>

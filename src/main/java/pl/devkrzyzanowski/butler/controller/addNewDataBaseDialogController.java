@@ -17,7 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
-import pl.devkrzyzanowski.butler.Utils.validator.ValidatorTextField;
+import pl.devkrzyzanowski.butler.Utils.validator.TextFieldValidator;
+import pl.devkrzyzanowski.butler.Utils.validator.UserValidator;
 
 /**
  * FXML Controller class
@@ -31,9 +32,7 @@ public class addNewDataBaseDialogController implements Initializable {
     @FXML
     private Button addButton;
     @FXML
-    private Button testConnectionButton;
-    @FXML
-    private Label testConnectionResult, dbUrlLabel;
+    private Label dbUrlLabel;
     @FXML
     private TextField dbDirectoryTextField;    
     @FXML
@@ -71,10 +70,6 @@ public class addNewDataBaseDialogController implements Initializable {
     }
 
     @FXML
-    private void testConnection(ActionEvent event) {
-    }
-
-    @FXML
     private void openDirectoryChooseDialog(ActionEvent event) {
         DirectoryChooser dch = new DirectoryChooser();
         File selectedDirectory = 
@@ -89,15 +84,12 @@ public class addNewDataBaseDialogController implements Initializable {
     }
     
     private void updatedbUrlLabel() {
-        dbUrlLabel.setText(dbDirectoryTextField.getText() + "\'" + dbNameTextField.getText());
+        dbUrlLabel.setText(dbDirectoryTextField.getText() + "\\" + dbNameTextField.getText());
     }
 
     private void initValidators() {
-        dbUserTextField.textProperty().addListener((observable) -> {
-            new ValidatorTextField().valideTextField(dbUserTextField);
-        });
         dbNameTextField.textProperty().addListener((observable) -> {
-            new ValidatorTextField().valideTextField(dbNameTextField);
+            new TextFieldValidator().valide(dbNameTextField);
         });
         dbDirectoryTextField.textProperty().addListener((observable) -> {
             updatedbUrlLabel();
@@ -105,5 +97,8 @@ public class addNewDataBaseDialogController implements Initializable {
         dbNameTextField.textProperty().addListener((observable) -> {
             updatedbUrlLabel();
         }); 
+        dbUserTextField.textProperty().addListener(((observable) -> {
+            new UserValidator().valide(dbUserTextField);
+        }));
     }
 }
