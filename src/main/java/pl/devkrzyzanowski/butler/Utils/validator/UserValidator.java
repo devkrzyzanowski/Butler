@@ -19,9 +19,14 @@ public class UserValidator {
     
     public int valide(TextField tf) {
         int flag = 0;
-        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{6,}");
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{6,12}");
         Matcher matcher = pattern.matcher(tf.getText());
-        if (matcher.matches() == true) {
+        if (matcher.matches() == true ) {
+            flag = 0;
+        } else {
+            flag = 1;
+        }
+        if (flag == 0) {
             tf.setStyle("-fx-border-color: none;");
         } else {
             tf.setStyle("-fx-border-color: red;");

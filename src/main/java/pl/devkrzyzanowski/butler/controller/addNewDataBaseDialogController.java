@@ -5,6 +5,7 @@
  */
 package pl.devkrzyzanowski.butler.controller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.Utils.FormRow;
 import pl.devkrzyzanowski.butler.Utils.validator.TextFieldValidator;
 import pl.devkrzyzanowski.butler.Utils.validator.UserValidator;
 
@@ -33,6 +36,9 @@ public class addNewDataBaseDialogController implements Initializable {
     private Button addButton;
     @FXML
     private Label dbUrlLabel;
+    @FXML private Label dbNameErrorLabel, dbUserErrorLabel, dbPasswordLabel, 
+            dbPasswordCheckLabel;
+    @FXML private FontAwesomeIconView dbUserValidIco, dbNameValidIco;
     @FXML
     private TextField dbDirectoryTextField;    
     @FXML
@@ -88,17 +94,29 @@ public class addNewDataBaseDialogController implements Initializable {
     }
 
     private void initValidators() {
+        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel);
+        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel);
+        
         dbNameTextField.textProperty().addListener((observable) -> {
             new TextFieldValidator().valide(dbNameTextField);
         });
         dbDirectoryTextField.textProperty().addListener((observable) -> {
             updatedbUrlLabel();
-        }); 
+        });
         dbNameTextField.textProperty().addListener((observable) -> {
-            updatedbUrlLabel();
-        }); 
+            dbn.valid();
+        });
         dbUserTextField.textProperty().addListener(((observable) -> {
-            new UserValidator().valide(dbUserTextField);
+            dbu.valid();
+//           UserValidator uv = new UserValidator();
+//           int v = uv.valide(dbUserTextField);
+//           if (v == 0) {
+//               dbUserValidIco.setGlyphName("CHECK");
+//               dbUserValidIco.setFill(Color.GREEN);
+//           } else {
+//               dbUserValidIco.setGlyphName("TIMES");
+//               dbUserValidIco.setFill(Color.RED);               
+//           }
         }));
     }
 }

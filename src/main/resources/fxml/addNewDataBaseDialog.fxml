@@ -50,29 +50,29 @@
             <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.url" GridPane.rowIndex="2" />
             <Label fx:id="dbUrlLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Label fx:id="dbNameErrorLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="dbUserErrorLabel" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <Label fx:id="dbPasswordLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Label fx:id="dbPasswordCheckLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <FontAwesomeIconView fill="LIME" glyphName="CHECK" layoutX="6.0" layoutY="21.0" size="22" />
+                  <FontAwesomeIconView fx:id="dbUserValidIco" fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
@@ -82,17 +82,17 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
-                  <FontAwesomeIconView layoutX="10.0" layoutY="18.0" />
+                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <FontAwesomeIconView layoutX="10.0" layoutY="17.0" />
+                  <FontAwesomeIconView fx:id="dbNameValidIco" fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="20.0" size="22" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <FontAwesomeIconView glyphName="GEAR" layoutX="10.0" layoutY="17.0" />
+                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="7.0" layoutY="20.0" size="22" />
                </children>
             </Pane>
          </children>
