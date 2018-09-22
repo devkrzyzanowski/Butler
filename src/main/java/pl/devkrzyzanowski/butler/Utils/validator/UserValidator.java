@@ -34,5 +34,20 @@ public class UserValidator {
         return flag;
     }
     
+    public int valideTextToShort(TextField tf) {
+        if (tf.getLength() > 12) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    public int valideTextToLong(TextField tf) {
+        if (tf.getLength() < 6) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
 
 }

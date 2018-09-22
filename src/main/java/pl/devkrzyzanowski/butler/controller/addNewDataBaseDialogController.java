@@ -94,8 +94,8 @@ public class addNewDataBaseDialogController implements Initializable {
     }
 
     private void initValidators() {
-        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel);
-        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel);
+        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel, rb);
+        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel, rb);
         
         dbNameTextField.textProperty().addListener((observable) -> {
             new TextFieldValidator().valide(dbNameTextField);
