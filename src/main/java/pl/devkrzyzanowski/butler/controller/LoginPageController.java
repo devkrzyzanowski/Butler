@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
-import pl.devkrzyzanowski.butler.Utils.validator.TextFieldValidator;
 
 /**
  *
@@ -53,22 +52,7 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-        TextFieldValidator vtf = new TextFieldValidator();
-        int flag = 0;
-        flag += vtf.valide(loginTextField);
-        flag += vtf.valide(passwordTextField);
-        if (flag != 0) {
-            initValidators();
-        }
-        
-        System.out.println(flag);
-//        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
-//                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
-        
-        
-//        connectingToDataBaseController ctdbc = MainApp.stageManager.getLoader().getController();
-//        ctdbc.initialize(MainApp.stageManager.getLoader().getLocation(), loginTextField.getText(),
-//                passwordTextField.getText(), dbNameTextField.getText());                    
+  
     }
 
     @FXML void showRegulations() {
@@ -78,10 +62,10 @@ public class LoginPageController implements Initializable {
     
     private void initValidators() {
         loginTextField.textProperty().addListener((observable) -> {
-            new TextFieldValidator().valide(loginTextField);
+        
         });
         passwordTextField.textProperty().addListener((observable) -> {
-            new TextFieldValidator().valide(passwordTextField);
+         
         });
     }
 }

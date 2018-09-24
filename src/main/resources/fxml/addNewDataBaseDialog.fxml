@@ -77,12 +77,12 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
+                  <FontAwesomeIconView fx:id="dbPasswordValidIco" fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
-                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
+                  <FontAwesomeIconView fx:id="dbPasswordCheckValidIco" fill="RED" glyphName="TIMES" layoutX="8.0" layoutY="21.0" size="22" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -92,7 +92,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <FontAwesomeIconView fill="RED" glyphName="TIMES" layoutX="7.0" layoutY="20.0" size="22" />
+                  <FontAwesomeIconView fx:id="dbDirectoryValidIco" fill="RED" glyphName="TIMES" layoutX="7.0" layoutY="20.0" size="22" />
                </children>
             </Pane>
          </children>

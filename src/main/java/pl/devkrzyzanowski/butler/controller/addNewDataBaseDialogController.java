@@ -9,6 +9,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,9 +21,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
-import pl.devkrzyzanowski.butler.Utils.FormRow;
-import pl.devkrzyzanowski.butler.Utils.validator.TextFieldValidator;
-import pl.devkrzyzanowski.butler.Utils.validator.UserValidator;
 
 /**
  * FXML Controller class
@@ -38,7 +37,8 @@ public class addNewDataBaseDialogController implements Initializable {
     private Label dbUrlLabel;
     @FXML private Label dbNameErrorLabel, dbUserErrorLabel, dbPasswordLabel, 
             dbPasswordCheckLabel;
-    @FXML private FontAwesomeIconView dbUserValidIco, dbNameValidIco;
+    @FXML private FontAwesomeIconView dbUserValidIco, dbNameValidIco, 
+            dbDirectoryValidIco, dbPasswordValidIco, dbPasswordCheckValidIco;
     @FXML
     private TextField dbDirectoryTextField;    
     @FXML
@@ -60,11 +60,18 @@ public class addNewDataBaseDialogController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
-        initValidators();
+        dbDirectoryTextField.textProperty().addListener((observable) -> {
+            updatedbUrlLabel();
+        });
+        dbNameTextField.textProperty().addListener((observable) -> {
+            updatedbUrlLabel();
+        });
     }    
 
     @FXML
@@ -73,6 +80,7 @@ public class addNewDataBaseDialogController implements Initializable {
 
     @FXML
     private void addStructure(ActionEvent event) {
+        valid();
     }
 
     @FXML
@@ -84,7 +92,6 @@ public class addNewDataBaseDialogController implements Initializable {
             dbDirectoryTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
             dbDir = selectedDirectory.getAbsolutePath();
-            
             dbDirectoryTextField.setText(dbDir);
         }
     }
@@ -92,31 +99,65 @@ public class addNewDataBaseDialogController implements Initializable {
     private void updatedbUrlLabel() {
         dbUrlLabel.setText(dbDirectoryTextField.getText() + "\\" + dbNameTextField.getText());
     }
-
-    private void initValidators() {
-        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel, rb);
-        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel, rb);
-        
-        dbNameTextField.textProperty().addListener((observable) -> {
-            new TextFieldValidator().valide(dbNameTextField);
-        });
-        dbDirectoryTextField.textProperty().addListener((observable) -> {
-            updatedbUrlLabel();
-        });
-        dbNameTextField.textProperty().addListener((observable) -> {
-            dbn.valid();
-        });
-        dbUserTextField.textProperty().addListener(((observable) -> {
-            dbu.valid();
-//           UserValidator uv = new UserValidator();
-//           int v = uv.valide(dbUserTextField);
-//           if (v == 0) {
-//               dbUserValidIco.setGlyphName("CHECK");
-//               dbUserValidIco.setFill(Color.GREEN);
-//           } else {
-//               dbUserValidIco.setGlyphName("TIMES");
-//               dbUserValidIco.setFill(Color.RED);               
-//           }
-        }));
+    
+    private void valid() {
+        if (validTextField(dbNameTextField, "[A-Za-z]+")) {
+            dbNameValidIco.setGlyphName("CHECK");
+            dbNameValidIco.setFill(Color.GREEN);
+        } else {
+            dbNameValidIco.setGlyphName("TIMES");
+            dbNameValidIco.setFill(Color.RED);            
+        }
+        if (validTextField(dbUserTextField, "[A-Za-z]+")) {
+            dbUserValidIco.setGlyphName("CHECK");
+            dbUserValidIco.setFill(Color.GREEN);
+        } else {
+            dbUserValidIco.setGlyphName("TIMES");
+            dbUserValidIco.setFill(Color.RED);            
+        }
+        if (validTextField(dbPasswordPasswordField, "[A-Za-z]+")) {
+            dbPasswordValidIco.setGlyphName("CHECK");
+            dbPasswordValidIco.setFill(Color.GREEN);
+        } else {
+            dbPasswordValidIco.setGlyphName("TIMES");
+            dbPasswordValidIco.setFill(Color.RED);            
+        }
+        if (validTextField(dbPasswordCheckPasswordField, "[A-Za-z]+")) {
+            dbPasswordCheckValidIco.setGlyphName("CHECK");
+            dbPasswordCheckValidIco.setFill(Color.GREEN);
+        } else {
+            dbPasswordCheckValidIco.setGlyphName("TIMES");
+            dbPasswordCheckValidIco.setFill(Color.RED);            
+        }
     }
+    
+    private boolean validTextField(TextField tf, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(tf.getText());
+        boolean flag = matcher.matches();
+        if (flag) {
+            tf.setStyle("-fx-border-color: none;");
+        } else {
+            tf.setStyle("-fx-border-color: red;");    
+        }
+        return flag;
+    }
+
+//    private void initValidators() {
+//        FormRow dburl = new FormRow(dbDirectoryTextField, dbDirectoryValidIco, rb);
+//        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel, rb);
+//        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel, rb);
+//        
+//        dbDirectoryTextField.textProperty().addListener((observable) -> {
+//            dburl.validTextField();
+//            updatedbUrlLabel();
+//        });
+//        dbNameTextField.textProperty().addListener((observable) -> {
+//            dbn.validTextField();
+//            updatedbUrlLabel();
+//        });
+//        dbUserTextField.textProperty().addListener(((observable) -> {
+//            dbu.validTextField();
+//        }));
+//    }
 }
