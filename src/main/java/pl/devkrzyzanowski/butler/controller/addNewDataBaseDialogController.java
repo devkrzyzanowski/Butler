@@ -21,6 +21,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.Utils.validator.PasswordValidator;
 
 /**
  * FXML Controller class
@@ -115,13 +116,21 @@ public class addNewDataBaseDialogController implements Initializable {
             dbUserValidIco.setGlyphName("TIMES");
             dbUserValidIco.setFill(Color.RED);            
         }
-        if (validTextField(dbPasswordPasswordField, "[A-Za-z]+")) {
+        if (new PasswordValidator().validate(dbPasswordPasswordField.getText())) {
             dbPasswordValidIco.setGlyphName("CHECK");
             dbPasswordValidIco.setFill(Color.GREEN);
         } else {
             dbPasswordValidIco.setGlyphName("TIMES");
             dbPasswordValidIco.setFill(Color.RED);            
-        }
+        }            
+        
+//        if (validTextField(dbPasswordPasswordField, "[A-Za-z]+")) {
+//            dbPasswordValidIco.setGlyphName("CHECK");
+//            dbPasswordValidIco.setFill(Color.GREEN);
+//        } else {
+//            dbPasswordValidIco.setGlyphName("TIMES");
+//            dbPasswordValidIco.setFill(Color.RED);            
+//        }
         if (validTextField(dbPasswordCheckPasswordField, "[A-Za-z]+")) {
             dbPasswordCheckValidIco.setGlyphName("CHECK");
             dbPasswordCheckValidIco.setFill(Color.GREEN);
@@ -142,22 +151,4 @@ public class addNewDataBaseDialogController implements Initializable {
         }
         return flag;
     }
-
-//    private void initValidators() {
-//        FormRow dburl = new FormRow(dbDirectoryTextField, dbDirectoryValidIco, rb);
-//        FormRow dbu = new FormRow(dbUserTextField, dbUserValidIco, dbUserErrorLabel, rb);
-//        FormRow dbn = new FormRow(dbNameTextField, dbNameValidIco, dbNameErrorLabel, rb);
-//        
-//        dbDirectoryTextField.textProperty().addListener((observable) -> {
-//            dburl.validTextField();
-//            updatedbUrlLabel();
-//        });
-//        dbNameTextField.textProperty().addListener((observable) -> {
-//            dbn.validTextField();
-//            updatedbUrlLabel();
-//        });
-//        dbUserTextField.textProperty().addListener(((observable) -> {
-//            dbu.validTextField();
-//        }));
-//    }
 }

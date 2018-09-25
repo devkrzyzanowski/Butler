@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -35,7 +36,10 @@
          <children>
             <TextField fx:id="dbNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="dbUserTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <PasswordField fx:id="dbPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <PasswordField fx:id="dbPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <tooltip>
+                  <Tooltip text="%tooltip.passwordRequirements" />
+               </tooltip></PasswordField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbName" textFill="#555555" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbUser" textFill="#555555" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbPassword" textFill="#555555" GridPane.rowIndex="4" />
@@ -47,7 +51,10 @@
             </Button>
             <TextField fx:id="dbDirectoryTextField" editable="false" GridPane.columnIndex="1" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbCheckPassword" GridPane.rowIndex="5" />
-            <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <tooltip>
+                  <Tooltip text="%tooltip.rePasswordRequirements" />
+               </tooltip></PasswordField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.url" GridPane.rowIndex="2" />
             <Label fx:id="dbUrlLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="dbNameErrorLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
