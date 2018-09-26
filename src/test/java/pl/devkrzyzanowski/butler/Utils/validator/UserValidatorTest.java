@@ -5,6 +5,8 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.TextField;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,38 +21,55 @@ import static org.junit.Assert.*;
  */
 public class UserValidatorTest {
     
+    private static UserValidator userValidator;
+    private static List<String> validStrings;
+    private static List<String> invalidStrings;
+    
     public UserValidatorTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        userValidator = new UserValidator();
+        validStrings = new ArrayList<>();
+        validStrings.add("User43");
+        validStrings.add("Administrator");
+        validStrings.add("d3d3Admin");
+        validStrings.add("operator");
+        
+        invalidStrings = new ArrayList<>();
+        invalidStrings.add("6Fdggggv");
+        invalidStrings.add("qqqq.eee");
+        invalidStrings.add(" Administrator");
+        invalidStrings.add("");       
+        invalidStrings.add("Admini_nos");            
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+   
+
 
     /**
      * Test of valide method, of class UserValidator.
      */
     @Test
-    public void testValide() {
-//        System.out.println("valide");
-//        TextField tf = null;
-//        UserValidator instance = new UserValidator();
-//        int expResult = 0;
-//        int result = instance.valide(tf);
-//        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void validUserTest() {
+        System.out.println("validUserTest");
+        validStrings.forEach((s) -> {
+            boolean expResult = Boolean.TRUE;
+            boolean result = userValidator.validate(s);
+            System.out.println("User is valid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
+    }
+    
+    @Test
+    public void invalidUserTest() {
+        System.out.println("validUserTest");
+        invalidStrings.forEach((s) -> {
+            boolean expResult = Boolean.FALSE;
+            boolean result = userValidator.validate(s);
+            System.out.println("User is invalid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
     }
     
 }

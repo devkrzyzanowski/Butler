@@ -7,27 +7,23 @@ package pl.devkrzyzanowski.butler.Utils.validator;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-
 /**
  *
  * @author Admin
  */
-public class DbNameValidator implements IValidator{
-    
+public class PostCodeValidator {
     private final Pattern pattern;
     private Matcher matcher;
     
     private static final String PATTERN =
-            "[A-Za-z]{4,20}";
+            "^\\d{2}-\\d{3}$";
     
-    public DbNameValidator() {
+    private PostCodeValidator() {
         pattern = Pattern.compile(PATTERN);
     }
     
-    @Override
     public boolean validate(final String data) {
         matcher = pattern.matcher(data);
         return matcher.matches();
     }
-    
 }

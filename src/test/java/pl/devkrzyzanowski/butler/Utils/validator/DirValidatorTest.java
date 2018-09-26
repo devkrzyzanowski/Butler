@@ -5,10 +5,8 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,29 +16,46 @@ import static org.junit.Assert.*;
  */
 public class DirValidatorTest {
     
+    private static DirValidator dirValidator;
+    private static List<String> validStrings;
+    private static List<String> invalidStrings;
+    
+    
     public DirValidatorTest() {
+        dirValidator = new DirValidator();
+        validStrings = new ArrayList<>();
+        validStrings.add("C:\\Users\\Admin\\");
+        validStrings.add("D:\\g\\");
+        validStrings.add("G:\\dir\\");
+        
+        invalidStrings = new ArrayList<>();
+        invalidStrings.add("no dir selection");
+        invalidStrings.add(":\\Users\\");
+        invalidStrings.add("C:");
+        invalidStrings.add("C:\\Documents");
+        invalidStrings.add("");
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void validDirTest() {
+        System.out.println("validDirTest");
+        validStrings.forEach((s) -> {
+            boolean expResult = Boolean.TRUE;
+            boolean result = dirValidator.validate(s);
+            System.out.println("Dir is valid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
+    }
+    
+    @Test
+    public void invalidDirTest() {
+        System.out.println("validDirTest");
+        invalidStrings.forEach((s) -> {
+            boolean expResult = Boolean.FALSE;
+            boolean result = dirValidator.validate(s);
+            System.out.println("Dir is invalid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
     }
     
 }

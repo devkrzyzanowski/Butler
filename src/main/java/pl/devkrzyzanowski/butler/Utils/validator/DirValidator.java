@@ -5,10 +5,29 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 /**
  *
  * @author Admin
  */
-public class DirValidator {
+public class DirValidator implements IValidator{
+    
+    private final Pattern pattern;
+    private Matcher matcher;
+    
+    private static final String PATTERN =
+            "([c-hC-H]:\\\\){1}([\\w]*\\\\)*";
+    
+    public DirValidator() {
+        pattern = Pattern.compile(PATTERN);
+    }
+
+    @Override
+    public boolean validate(String data) {
+        matcher = pattern.matcher(data);
+        return matcher.matches();
+    }
     
 }

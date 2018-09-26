@@ -5,9 +5,8 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,29 +17,48 @@ import static org.junit.Assert.*;
  */
 public class DbNameValidatorTest {
     
+    private static DbNameValidator dbNameValidator;
+    private static List<String> validStrings;
+    private static List<String> invalidStrings;
+    
     public DbNameValidatorTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        dbNameValidator = new DbNameValidator();
+        validStrings = new ArrayList<>();
+        validStrings.add("database");
+        validStrings.add("datDDbase");
+        validStrings.add("BASEssss");
+        validStrings.add("databaSe");
+        
+        invalidStrings = new ArrayList<>();
+        invalidStrings.add("data base");
+        invalidStrings.add("data2Base");
+        invalidStrings.add("dataBase!");
+        invalidStrings.add("dat");
     }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void validDbNameTest() {
+        System.out.println("validDbNameTest");
+        validStrings.forEach((s) -> {
+            boolean expResult = Boolean.TRUE;
+            boolean result = dbNameValidator.validate(s);
+            System.out.println("DbName is valid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
     }
     
+    @Test
+    public void invalidDbNameTest() {
+        System.out.println("validDbNameTest");
+        invalidStrings.forEach((s) -> {
+            boolean expResult = Boolean.FALSE;
+            boolean result = dbNameValidator.validate(s);
+            System.out.println("DbName is invalid : " + s + " ->  " + result);
+            assertEquals(expResult, result);
+        });
+    }
 }

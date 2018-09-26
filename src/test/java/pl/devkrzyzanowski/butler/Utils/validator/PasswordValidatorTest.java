@@ -44,11 +44,9 @@ public class PasswordValidatorTest {
     @Test()
     public void validPasswordTest() {
         System.out.println("validPasswordTest");
-        PasswordValidator instance = new PasswordValidator();
-
         validPassword.forEach((s) -> {
             boolean expResult = Boolean.TRUE;
-            boolean result = instance.validate(s);
+            boolean result = passwordValidator.validate(s);
             System.out.println("Password is valid :" + s + " - " + result);
             assertEquals(expResult, result);
         });
@@ -56,11 +54,9 @@ public class PasswordValidatorTest {
     @Test()
     public void invalidPasswordTest() {
         System.out.println("invalidPasswordTest");
-        PasswordValidator instance = new PasswordValidator();
-
         invalidPassword.forEach((s) -> {
             boolean expResult = Boolean.FALSE;
-            boolean result = instance.validate(s);
+            boolean result = passwordValidator.validate(s);
             System.out.println("Password is invalid :" + s + " - " + result);
             assertEquals(expResult, result);
         });

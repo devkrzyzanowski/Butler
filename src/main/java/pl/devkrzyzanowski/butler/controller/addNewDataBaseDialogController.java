@@ -15,13 +15,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.Utils.validator.DbNameValidator;
+import pl.devkrzyzanowski.butler.Utils.validator.DirValidator;
 import pl.devkrzyzanowski.butler.Utils.validator.PasswordValidator;
+import pl.devkrzyzanowski.butler.Utils.validator.UserValidator;
 
 /**
  * FXML Controller class
@@ -77,6 +82,15 @@ public class addNewDataBaseDialogController implements Initializable {
 
     @FXML
     private void cancelAction(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+alert.setTitle("Message Here...");
+alert.setHeaderText("Look, an Information Dialog");
+alert.setContentText("I have a great message for you!");
+alert.showAndWait().ifPresent(rs -> {
+    if (rs == ButtonType.OK) {
+        System.out.println("Pressed OK.");
+    }
+});
     }
 
     @FXML
@@ -92,63 +106,33 @@ public class addNewDataBaseDialogController implements Initializable {
         if(selectedDirectory == null) {
             dbDirectoryTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
-            dbDir = selectedDirectory.getAbsolutePath();
+            dbDir = selectedDirectory.getAbsolutePath() + "\\";
             dbDirectoryTextField.setText(dbDir);
         }
     }
     
     private void updatedbUrlLabel() {
-        dbUrlLabel.setText(dbDirectoryTextField.getText() + "\\" + dbNameTextField.getText());
+        dbUrlLabel.setText(dbDirectoryTextField.getText() + dbNameTextField.getText());
+    }
+    
+    private boolean setValidView(FontAwesomeIconView ico, boolean value) {
+        if (value) {
+            ico.setGlyphName("CHECK");
+            ico.setFill(Color.GREEN);
+            return true;
+        } else {
+            ico.setGlyphName("TIMES");
+            ico.setFill(Color.RED);
+            return false;
+        }
     }
     
     private void valid() {
-        if (validTextField(dbNameTextField, "[A-Za-z]+")) {
-            dbNameValidIco.setGlyphName("CHECK");
-            dbNameValidIco.setFill(Color.GREEN);
-        } else {
-            dbNameValidIco.setGlyphName("TIMES");
-            dbNameValidIco.setFill(Color.RED);            
-        }
-        if (validTextField(dbUserTextField, "[A-Za-z]+")) {
-            dbUserValidIco.setGlyphName("CHECK");
-            dbUserValidIco.setFill(Color.GREEN);
-        } else {
-            dbUserValidIco.setGlyphName("TIMES");
-            dbUserValidIco.setFill(Color.RED);            
-        }
-        if (new PasswordValidator().validate(dbPasswordPasswordField.getText())) {
-            dbPasswordValidIco.setGlyphName("CHECK");
-            dbPasswordValidIco.setFill(Color.GREEN);
-        } else {
-            dbPasswordValidIco.setGlyphName("TIMES");
-            dbPasswordValidIco.setFill(Color.RED);            
-        }            
-        
-//        if (validTextField(dbPasswordPasswordField, "[A-Za-z]+")) {
-//            dbPasswordValidIco.setGlyphName("CHECK");
-//            dbPasswordValidIco.setFill(Color.GREEN);
-//        } else {
-//            dbPasswordValidIco.setGlyphName("TIMES");
-//            dbPasswordValidIco.setFill(Color.RED);            
-//        }
-        if (validTextField(dbPasswordCheckPasswordField, "[A-Za-z]+")) {
-            dbPasswordCheckValidIco.setGlyphName("CHECK");
-            dbPasswordCheckValidIco.setFill(Color.GREEN);
-        } else {
-            dbPasswordCheckValidIco.setGlyphName("TIMES");
-            dbPasswordCheckValidIco.setFill(Color.RED);            
-        }
+        setValidView(dbUserValidIco, new DirValidator().validate(dbDirectoryTextField.getText()));
+        setValidView(dbNameValidIco, new DbNameValidator().validate(dbNameTextField.getText()));
+        setValidView(dbDirectoryValidIco, new UserValidator().validate(dbUserTextField.getText()));
+        setValidView(dbPasswordValidIco, new PasswordValidator().validate(dbPasswordPasswordField.getText()));    
+        setValidView(dbPasswordCheckValidIco, new PasswordValidator().validate(dbPasswordCheckPasswordField.getText()));
     }
     
-    private boolean validTextField(TextField tf, String regex) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(tf.getText());
-        boolean flag = matcher.matches();
-        if (flag) {
-            tf.setStyle("-fx-border-color: none;");
-        } else {
-            tf.setStyle("-fx-border-color: red;");    
-        }
-        return flag;
-    }
 }
