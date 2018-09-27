@@ -32,7 +32,7 @@ public class UserValidatorTest {
     public static void setUpClass() {
         userValidator = new UserValidator();
         validStrings = new ArrayList<>();
-        validStrings.add("User43");
+        validStrings.add("User43qq");
         validStrings.add("Administrator");
         validStrings.add("d3d3Admin");
         validStrings.add("operator");

@@ -8,9 +8,9 @@ package pl.devkrzyzanowski.butler.controller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -82,15 +82,7 @@ public class addNewDataBaseDialogController implements Initializable {
 
     @FXML
     private void cancelAction(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-alert.setTitle("Message Here...");
-alert.setHeaderText("Look, an Information Dialog");
-alert.setContentText("I have a great message for you!");
-alert.showAndWait().ifPresent(rs -> {
-    if (rs == ButtonType.OK) {
-        System.out.println("Pressed OK.");
-    }
-});
+
     }
 
     @FXML
@@ -128,11 +120,34 @@ alert.showAndWait().ifPresent(rs -> {
     }
     
     private void valid() {
-        setValidView(dbUserValidIco, new DirValidator().validate(dbDirectoryTextField.getText()));
-        setValidView(dbNameValidIco, new DbNameValidator().validate(dbNameTextField.getText()));
-        setValidView(dbDirectoryValidIco, new UserValidator().validate(dbUserTextField.getText()));
-        setValidView(dbPasswordValidIco, new PasswordValidator().validate(dbPasswordPasswordField.getText()));    
-        setValidView(dbPasswordCheckValidIco, new PasswordValidator().validate(dbPasswordCheckPasswordField.getText()));
+        boolean flag = true;
+        List<Boolean> validList = new ArrayList<>();
+        validList.add(setValidView(dbDirectoryValidIco, new DirValidator()
+                .validate(dbDirectoryTextField.getText())));
+        validList.add(setValidView(dbNameValidIco, new DbNameValidator()
+                .validate(dbNameTextField.getText())));
+        validList.add(setValidView(dbUserValidIco, new UserValidator()
+                .validate(dbUserTextField.getText())));
+        validList.add(setValidView(dbPasswordValidIco, new PasswordValidator()
+                .validate(dbPasswordPasswordField.getText())));    
+        validList.add(setValidView(dbPasswordCheckValidIco, new PasswordValidator()
+                .validate(dbPasswordCheckPasswordField.getText())));
+        
+        for (Boolean b : validList) {
+            if (!b) { flag = false; }
+        }
+        
+        if (!flag) {
+Alert alert = new Alert(Alert.AlertType.INFORMATION);
+alert.setTitle("Message Here...");
+alert.setHeaderText("Look, an Information Dialog");
+alert.setContentText("I have a great message for you!");
+alert.showAndWait().ifPresent(rs -> {
+    if (rs == ButtonType.OK) {
+        System.out.println("Pressed OK.");
+    }
+});
+        }
     }
     
 }

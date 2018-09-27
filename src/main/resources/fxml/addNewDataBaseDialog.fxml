@@ -34,8 +34,14 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="dbNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="dbUserTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="dbNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip text="%tooltip.dbNameRequirements" />
+               </tooltip></TextField>
+            <TextField fx:id="dbUserTextField" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <tooltip>
+                  <Tooltip text="%tooltip.dbUserRequirements" />
+               </tooltip></TextField>
             <PasswordField fx:id="dbPasswordPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip text="%tooltip.passwordRequirements" />
@@ -49,7 +55,10 @@
                   <Insets left="5.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="dbDirectoryTextField" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="dbDirectoryTextField" editable="false" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip text="%tooltip.dirRequirements" />
+               </tooltip></TextField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbCheckPassword" GridPane.rowIndex="5" />
             <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <tooltip>

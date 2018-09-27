@@ -18,7 +18,7 @@ public class UserValidator {
     private Matcher matcher;
     
     private static final String PATTERN = 
-            "[a-zA-Z0-9]{6,20}";
+            "[a-zA-Z]{1}[a-zA-Z0-9]{6,20}";
     
     public UserValidator() {
         pattern = Pattern.compile(PATTERN);
