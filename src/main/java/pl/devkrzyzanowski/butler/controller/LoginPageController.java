@@ -10,10 +10,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
@@ -24,18 +23,21 @@ import pl.devkrzyzanowski.butler.MainApp;
  *
  * @author MichalKrzyzanowski
  */
-public class LoginPageController {
+public class LoginPageController implements Initializable {
 
     @FXML private TextField loginTextField, dbNameTextField;
     @FXML private PasswordField passwordTextField;
+    @FXML private Button loginButton;
+    private ResourceBundle rb;
 
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        this.rb = rb;
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
         MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/fxml/addNewDataBaseStructure.fxml"); // TODO CHANGE NAME
+                .getScene().getWindow(), "/fxml/addNewDataBaseDialog.fxml");
     }
     
     @FXML private void openDirectoryChooseDialog(ActionEvent event) {
@@ -43,32 +45,27 @@ public class LoginPageController {
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedDirectory == null) {
-            dbNameTextField.setText("No Directory selected");
+            dbNameTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
             dbNameTextField.setText(selectedDirectory.getAbsolutePath());
         }
     }
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/butler/view/dialogs/connectingToDataBase.fxml");
-//        connectingToDataBaseController ctdbc = MainApp.stageManager.getLoader().getController();
-//        ctdbc.initialize(MainApp.stageManager.getLoader().getLocation(), loginTextField.getText(),
-//                passwordTextField.getText(), dbNameTextField.getText());                    
+  
     }
 
     @FXML void showRegulations() {
-
+        //TODO : INIT
     }  
-    
-    private void setPage(ActionEvent event, String path) throws IOException{
-        ResourceBundle bundle = ResourceBundle.getBundle("resources.bundles.messages");
-        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/butler/view/"+path+".fxml"), bundle);
 
-        Parent root = fXMLLoader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    
+    private void initValidators() {
+        loginTextField.textProperty().addListener((observable) -> {
+        
+        });
+        passwordTextField.textProperty().addListener((observable) -> {
+         
+        });
     }
 }

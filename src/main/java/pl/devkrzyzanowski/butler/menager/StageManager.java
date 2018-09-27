@@ -33,7 +33,6 @@ public class StageManager {
     public StageManager(Stage stage, String fxml) {
         setBundle("bundles.messages", Locale.getDefault());
         newStage(stage, fxml);
-        
     }
     
     public boolean setBundle(String path, Locale locale) {
