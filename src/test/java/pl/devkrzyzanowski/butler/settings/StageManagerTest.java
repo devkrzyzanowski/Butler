@@ -42,38 +42,38 @@ public class StageManagerTest {
     /**
      * Test of newStage method, of class StageManager.
      */
-    @Test
-    public void testNewStage() {
-        System.out.println("newStage");
-        Stage stage = null;
-        String fxml = "";
-        StageManager instance = new StageManager(stage, fxml);
-        instance.newStage(stage, fxml);
-    }
-
-    /**
-     * Test of changeStage method, of class StageManager.
-     */
-    @Test
-    public void testChangeStage() {
-        System.out.println("changeStage");
-        Stage stage = null;
-        String fxml = "";
-        StageManager instance = new StageManager(stage, fxml);
-        instance.changeStage(stage, fxml);
-    }
-
-    /**
-     * Test of addModalStage method, of class StageManager.
-     */
-    @Test
-    public void testAddModalStage() {
-        System.out.println("addModalStage");
-        Stage stage = null;
-        Window owner = null;
-        String fxml = "";
-        StageManager instance = new StageManager(stage, fxml);
-        instance.addModalStage(owner, fxml);
-    }
+//    @Test
+//    public void testNewStage() {
+//        System.out.println("newStage");
+//        Stage stage = null;
+//        String fxml = "";
+//        StageManager instance = new StageManager(stage, fxml);
+//        instance.newStage(stage, fxml);
+//    }
+//
+//    /**
+//     * Test of changeStage method, of class StageManager.
+//     */
+//    @Test
+//    public void testChangeStage() {
+//        System.out.println("changeStage");
+//        Stage stage = null;
+//        String fxml = "";
+//        StageManager instance = new StageManager(stage, fxml);
+//        instance.changeStage(stage, fxml);
+//    }
+//
+//    /**
+//     * Test of addModalStage method, of class StageManager.
+//     */
+//    @Test
+//    public void testAddModalStage() {
+//        System.out.println("addModalStage");
+//        Stage stage = null;
+//        Window owner = null;
+//        String fxml = "";
+//        StageManager instance = new StageManager(stage, fxml);
+//        instance.addModalStage(owner, fxml);
+//    }
     
 }

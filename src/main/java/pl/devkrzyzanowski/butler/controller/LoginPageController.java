@@ -13,11 +13,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.utils.Pref;
 
 /**
  *
@@ -25,19 +27,36 @@ import pl.devkrzyzanowski.butler.MainApp;
  */
 public class LoginPageController implements Initializable {
 
-    @FXML private TextField loginTextField, dbNameTextField;
+    @FXML private TextField loginTextField, dirTextField;
     @FXML private PasswordField passwordTextField;
     @FXML private Button loginButton;
+    @FXML private CheckBox rememberLoginCheckBox;
     private ResourceBundle rb;
+    private Pref pref;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
+        pref = new Pref();
+        if (!pref.getPrefUserName().equals("")) {
+        loginTextField.setText(pref.getPrefUserName());
+        } else {
+            loginTextField.setText("");
+        }
+        if (!pref.getPrefDir().equals("")) {
+            dirTextField.setText(pref.getPrefDir());
+        } else {
+            dirTextField.setText("");
+        }
+            rememberLoginCheckBox.setSelected(pref.getSaveUserNameCheckBox());
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
-        MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
+        
+        Stage stage = MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
                 .getScene().getWindow(), "/fxml/addNewDataBaseDialog.fxml");
+        stage.setResizable(false);
+        stage.sizeToScene();
     }
     
     @FXML private void openDirectoryChooseDialog(ActionEvent event) {
@@ -45,14 +64,22 @@ public class LoginPageController implements Initializable {
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedDirectory == null) {
-            dbNameTextField.setText(rb.getString("name.noDirectorySelected"));
+            dirTextField.setText(rb.getString("name.noDirectorySelected"));
         } else {
-            dbNameTextField.setText(selectedDirectory.getAbsolutePath());
+            dirTextField.setText(selectedDirectory.getAbsolutePath());
         }
     }
 
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-  
+        if (rememberLoginCheckBox.selectedProperty().getValue()) {
+            new Pref().setPrefUserName(loginTextField.getText());
+        } else {
+            new Pref().setPrefUserName("");            
+        }
+        if (!dirTextField.getText().equals("")) {
+            new Pref().setPrefDir(dirTextField.getText());
+        }
+        pref.setSaveUserNameCheckbox(rememberLoginCheckBox.selectedProperty().getValue());
     }
 
     @FXML void showRegulations() {

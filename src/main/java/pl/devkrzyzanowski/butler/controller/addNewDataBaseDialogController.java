@@ -23,10 +23,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
-import pl.devkrzyzanowski.butler.Utils.validator.DbNameValidator;
-import pl.devkrzyzanowski.butler.Utils.validator.DirValidator;
-import pl.devkrzyzanowski.butler.Utils.validator.PasswordValidator;
-import pl.devkrzyzanowski.butler.Utils.validator.UserValidator;
+import pl.devkrzyzanowski.butler.utils.Pref;
+import pl.devkrzyzanowski.butler.utils.validator.DbNameValidator;
+import pl.devkrzyzanowski.butler.utils.validator.DirValidator;
+import pl.devkrzyzanowski.butler.utils.validator.PasswordValidator;
+import pl.devkrzyzanowski.butler.utils.validator.UserValidator;
 
 /**
  * FXML Controller class
@@ -82,7 +83,6 @@ public class addNewDataBaseDialogController implements Initializable {
 
     @FXML
     private void cancelAction(ActionEvent event) {
-
     }
 
     @FXML

@@ -5,6 +5,7 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
+import pl.devkrzyzanowski.butler.utils.validator.UserValidator;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TextField;
