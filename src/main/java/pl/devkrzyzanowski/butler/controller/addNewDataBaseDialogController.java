@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.Model.Database;
 import pl.devkrzyzanowski.butler.utils.Pref;
 import pl.devkrzyzanowski.butler.utils.validator.DbNameValidator;
 import pl.devkrzyzanowski.butler.utils.validator.DirValidator;
@@ -88,6 +89,10 @@ public class addNewDataBaseDialogController implements Initializable {
     @FXML
     private void addStructure(ActionEvent event) {
         valid();
+        Database db = new Database();
+        db.loadDriver();
+        db.create(dbDirectoryTextField.getText(), dbNameTextField.getText());
+        db.close();
     }
 
     @FXML
