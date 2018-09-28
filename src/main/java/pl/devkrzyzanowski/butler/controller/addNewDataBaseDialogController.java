@@ -24,11 +24,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import pl.devkrzyzanowski.butler.Model.Database;
-import pl.devkrzyzanowski.butler.utils.Pref;
-import pl.devkrzyzanowski.butler.utils.validator.DbNameValidator;
-import pl.devkrzyzanowski.butler.utils.validator.DirValidator;
-import pl.devkrzyzanowski.butler.utils.validator.PasswordValidator;
-import pl.devkrzyzanowski.butler.utils.validator.UserValidator;
+import pl.devkrzyzanowski.butler.utils.validators.DbNameValidator;
+import pl.devkrzyzanowski.butler.utils.validators.DirValidator;
+import pl.devkrzyzanowski.butler.utils.validators.PasswordValidator;
+import pl.devkrzyzanowski.butler.utils.validators.UserValidator;
 
 /**
  * FXML Controller class

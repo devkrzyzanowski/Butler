@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.devkrzyzanowski.butler.Utils.validator;
+package pl.devkrzyzanowski.butler.utils.validators;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -12,20 +12,20 @@ import java.util.regex.Matcher;
  *
  * @author Admin
  */
-public class DbNameValidator implements IValidator{
+public class DirValidator implements IValidator{
     
     private final Pattern pattern;
     private Matcher matcher;
     
     private static final String PATTERN =
-            "[A-Za-z]{4,20}";
+            "([c-hC-H]:\\\\){1}([\\w]*\\\\)*";
     
-    public DbNameValidator() {
+    public DirValidator() {
         pattern = Pattern.compile(PATTERN);
     }
-    
+
     @Override
-    public boolean validate(final String data) {
+    public boolean validate(String data) {
         matcher = pattern.matcher(data);
         return matcher.matches();
     }

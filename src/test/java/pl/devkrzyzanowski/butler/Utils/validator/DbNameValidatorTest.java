@@ -5,7 +5,7 @@
  */
 package pl.devkrzyzanowski.butler.Utils.validator;
 
-import pl.devkrzyzanowski.butler.utils.validator.DbNameValidator;
+import pl.devkrzyzanowski.butler.utils.validators.DbNameValidator;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.BeforeClass;

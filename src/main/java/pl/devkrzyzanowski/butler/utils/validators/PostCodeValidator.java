@@ -3,29 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.devkrzyzanowski.butler.Utils.validator;
+package pl.devkrzyzanowski.butler.utils.validators;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.regex.Matcher;
 /**
  *
  * @author Admin
  */
-public class PasswordValidator {
-    
+public class PostCodeValidator {
     private final Pattern pattern;
     private Matcher matcher;
     
-    private static final String PATTERN = 
-            "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,20})";
+    private static final String PATTERN =
+            "^\\d{2}-\\d{3}$";
     
-    public PasswordValidator() {
+    private PostCodeValidator() {
         pattern = Pattern.compile(PATTERN);
     }
     
-    public boolean validate(final String password) {
-        matcher = pattern.matcher(password);
+    public boolean validate(final String data) {
+        matcher = pattern.matcher(data);
         return matcher.matches();
     }
 }
