@@ -62,8 +62,11 @@ public class addNewDataBaseDialogController implements Initializable {
     private TextField directoryTextField;
     
     private ResourceBundle rb;
+    
     private String dbDir = "";
-    private String dbName ="";
+    private String dbName = "";
+    private String dbUser = "";
+    private String dbPassword = "";
     
     /**
      * Initializes the controller class.
@@ -87,11 +90,19 @@ public class addNewDataBaseDialogController implements Initializable {
 
     @FXML
     private void addStructure(ActionEvent event) {
-        valid();
+        if (valid()) {
+        dbDir = dbDirectoryTextField.getText();
+        dbName = dbNameTextField.getText();
+        dbUser = dbUserTextField.getText();
+        dbPassword = dbPasswordPasswordField.getText();
+        
         Database db = new Database();
         db.loadDriver();
-        db.create(dbDirectoryTextField.getText(), dbNameTextField.getText());
+        db.create(dbDir, dbName);
+        db.addReadWriteUser(dbUser, dbPassword);
+        db.initAuthentication();
         db.close();
+        }
     }
 
     @FXML
@@ -123,7 +134,7 @@ public class addNewDataBaseDialogController implements Initializable {
         }
     }
     
-    private void valid() {
+    private boolean valid() {
         boolean flag = true;
         List<Boolean> validList = new ArrayList<>();
         validList.add(setValidView(dbDirectoryValidIco, new DirValidator()
@@ -140,18 +151,7 @@ public class addNewDataBaseDialogController implements Initializable {
         for (Boolean b : validList) {
             if (!b) { flag = false; }
         }
-        
-        if (!flag) {
-Alert alert = new Alert(Alert.AlertType.INFORMATION);
-alert.setTitle("Message Here...");
-alert.setHeaderText("Look, an Information Dialog");
-alert.setContentText("I have a great message for you!");
-alert.showAndWait().ifPresent(rs -> {
-    if (rs == ButtonType.OK) {
-        System.out.println("Pressed OK.");
-    }
-});
-        }
+        return flag;
     }
     
 }

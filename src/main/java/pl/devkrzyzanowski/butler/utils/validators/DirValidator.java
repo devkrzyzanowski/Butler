@@ -7,6 +7,7 @@ package pl.devkrzyzanowski.butler.utils.validators;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import pl.devkrzyzanowski.butler.utils.validators.IValidator;
 
 /**
  *

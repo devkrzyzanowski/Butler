@@ -7,6 +7,7 @@ package pl.devkrzyzanowski.butler.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -26,10 +27,23 @@ public final class Database {
         boolean success = false;
         try {
             Class.forName(driver);
+            success = true;
             System.out.println(driver + " loaded.");
         } catch (ClassNotFoundException e) {
             System.err.println(e.getMessage());
         }
+        return success;
+    }
+    
+    public boolean connect(String dbURL, String username, String password) {
+        boolean success = false;
+        try {
+            con = DriverManager.getConnection("jdbc:derby:" + dbURL, username, password);
+            success = true;
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        
         return success;
     }
     
@@ -66,6 +80,27 @@ public final class Database {
             stmt.close();
         } catch (SQLException e) {
                 System.err.println(e);
+        }
+        return success;
+    }
+    
+    public boolean initAuthentication() {
+        boolean success = false;
+        try {
+        Statement stmt = con.createStatement();
+        // Setting and Confirming requireAuthentication
+        stmt.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(" +
+            "'derby.connection.requireAuthentication', 'true')");
+        ResultSet rs = stmt.executeQuery(
+            "VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(" +
+            "'derby.connection.requireAuthentication')");
+        rs.next();
+        System.out.println("Value of requireAuthentication is " + rs.getString(1));
+        // Setting authentication scheme to Derby
+        stmt.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(" +
+            "'derby.authentication.provider', 'BUILTIN')");        
+        } catch (SQLException e) {
+            System.err.println(e);
         }
         return success;
     }

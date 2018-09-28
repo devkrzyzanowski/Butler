@@ -15,6 +15,9 @@ public class Pref {
     Preferences userPrefs;
     Preferences systemPrefs;
     
+    private final String SAVE_USERNAME_CHECKBOX = "save_username_checkbox";
+    private final String USERNAME = "username";
+    private final String DIR = "dir";
     
     public Pref() {
         userPrefs = Preferences.userNodeForPackage(MainApp.class);
@@ -26,23 +29,23 @@ public class Pref {
     }
     
     public void setPrefUserName(String value) {
-        setValue(userPrefs, "username", value);
+        setValue(userPrefs, USERNAME, value);
     }
     public void setPrefDir(String value) {
-        setValue(userPrefs, "dir", value);
+        setValue(userPrefs, DIR, value);
     }
     public void setSaveUserNameCheckbox(Boolean value) {
-        setValue(userPrefs, "saveUserNameCheckbox", value.toString());
+        setValue(userPrefs, SAVE_USERNAME_CHECKBOX, value.toString());
     }
     
     public String getPrefUserName() {
-        return userPrefs.get("username", "");
+        return userPrefs.get(USERNAME, "");
     }
     public String getPrefDir() {
-        return userPrefs.get("dir", "");
+        return userPrefs.get(DIR, "");
     }
     public Boolean getSaveUserNameCheckBox() {
-        return userPrefs.getBoolean("saveUserNameCheckbox", false);
+        return userPrefs.getBoolean(SAVE_USERNAME_CHECKBOX, false);
     }
     
     public void setExpirationPassword(Integer value) {
