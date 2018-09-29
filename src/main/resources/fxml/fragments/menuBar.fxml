@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="25.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="butler.controller.fragments.MenuBarController">
+<AnchorPane fx:id="anchorPane" maxHeight="25.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.fragments.MenuBarController">
    <children>
       <MenuBar fx:id="menuBar" layoutY="1.0" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <menus>

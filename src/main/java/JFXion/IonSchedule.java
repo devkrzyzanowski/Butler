@@ -5,8 +5,7 @@
  */
 package JFXion;
 
-import butler.controller.dialogs.ModifyBookingController;
-import butler.model.Model;
+
 import butler.utils.Booking;
 import butler.utils.Room;
 import java.sql.Timestamp;
@@ -20,6 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
 
 /**
  *
@@ -33,10 +34,10 @@ public class IonSchedule extends ScrollPane {
     private List<ScheduleCell> scheduleCells;
     private ObservableList<Room> roomList;
     private ObservableList<Booking> bookingList;
-    private Model model;
+    private Database db;
     
     public IonSchedule(ObservableList<Room> roomList, ObservableList<Booking> bookingList){
-        this.model = butler.Butler.model;
+        this.db = MainApp.databaseManager;
         this.roomList = roomList;
         this.bookingList = bookingList;
         gridPane = new GridPane();
@@ -52,18 +53,18 @@ public class IonSchedule extends ScrollPane {
     }
     
     private void setUpData(){
-        addRoomsRow(model.getRoomList());
+        addRoomsRow(db.getRoomList());
         addTimeColumn();
-        addSchedules(model.getBookingList(), timeCells, roomCells);        
+        addSchedules(db.getBookingList(), timeCells, roomCells);        
     }
     
     private void addListeners() {
         scheduleCells.forEach((sc) -> {
             sc.setOnMouseClicked((MouseEvent event) -> {
-                butler.Butler.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
+                MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
                         "/butler/view/dialogs/modifyBooking.fxml");
-                ModifyBookingController mdf = butler.Butler.stageManager.getLoader().getController();
-                mdf.init(sc.getBooking(), IonSchedule.this);
+//                ModifyBookingController mdf = MainApp.stageManager.getLoader().getController();
+//                mdf.init(sc.getBooking(), IonSchedule.this); TODO
             });
         });
     }

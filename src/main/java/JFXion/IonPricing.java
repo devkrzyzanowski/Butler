@@ -4,9 +4,7 @@
  */
 package JFXion;
 
-import butler.controller.dialogs.ModifyBookingController;
-import butler.controller.dialogs.ModifyPricingController;
-import butler.model.Model;
+
 import butler.utils.Booking;
 import butler.utils.Room;
 import java.sql.Timestamp;
@@ -19,6 +17,8 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
 
 /**
  *
@@ -32,10 +32,10 @@ public class IonPricing extends ScrollPane {
     private List<PriceCell> priceCells;
     private ObservableList<Room> roomList;
     private ObservableList<Booking> bookingList;
-    private Model model;
+    private Database db;
     
     public IonPricing(ObservableList<Room> roomList, ObservableList<Booking> bookingList){
-        this.model = butler.Butler.model;
+        this.db = MainApp.databaseManager;
         this.roomList = roomList;
         this.bookingList = bookingList;
         gridPane = new GridPane();
@@ -51,18 +51,18 @@ public class IonPricing extends ScrollPane {
     }
     
     private void setUpData(){
-        addRoomsRow(model.getRoomList());
+        addRoomsRow(db.getRoomList());
         addTimeColumn();
-        addSchedules(model.getBookingList(), timeCells, roomCells);        
+        addSchedules(db.getBookingList(), timeCells, roomCells);        
     }
     
     private void addListeners() {
         priceCells.forEach((sc) -> {
             sc.setOnMouseClicked((MouseEvent event) -> {
-                butler.Butler.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(), 
+                MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(), 
                         "/butler/view/dialogs/modifyBooking.fxml");
-                ModifyPricingController mdf = butler.Butler.stageManager.getLoader().getController();
-                mdf.init(sc.getBooking(), IonPricing.this);
+//                ModifyPricingController mdf = MainApp.stageManager.getLoader().getController();
+//                mdf.init(sc.getBooking(), IonPricing.this); TODO
             });
         });
     }

@@ -4,40 +4,41 @@
  */
 package JFXion;
 
-import butler.model.Model;
 import butler.utils.Booking;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
 
 /**
  *
  * @author MichalKrzyzanowski
  */
-public class PriceCell extends Pane {
+public class ScheduleCell extends Pane {
     private Integer idColumn;
     private Integer idRow;
     private Label text;
     private Integer bookingDays;
-    private Model model;
+    private Database db;
     private Color bgColor;
     private Integer idBooking;
     private Booking booking;
     
-    public PriceCell(Integer idColumn, Integer idRow, Booking booking, Integer width) {
-        model = butler.Butler.model;        
+    public ScheduleCell(Integer idColumn, Integer idRow, Booking booking) {
+        db = MainApp.databaseManager;     
         this.booking = booking;
         this.idColumn = idColumn;
         this.idRow = idRow;
-        this.setMinSize(120, width);
-        this.setPrefSize(120, width);
+        this.setMinSize(120, 20);
+        this.setPrefSize(120, 20);
         this.bookingDays = booking.getBookingDays();
         this.idBooking = booking.getId().getValue();
-        this.bgColor = Color.web(model.getLegendById(booking.getIdLegend()).getColor());
+        this.bgColor = Color.web(db.getLegendById(booking.getIdLegend()).getColor());
         System.out.println("test");
-        
+ 
         this.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -57,9 +58,9 @@ public class PriceCell extends Pane {
             }
         });
         String col = String.valueOf(bgColor).substring(2, 8);
-        text = new Label(model.getClientById(booking.getIdClient()).getFirstName()
-                + " " + model.getClientById(booking.getIdClient()).getFirstName()
-                + "\n" + model.getClientById(booking.getIdClient()).getContactPhoneNumber());
+        text = new Label(db.getClientById(booking.getIdClient()).getFirstName()
+                + " " + db.getClientById(booking.getIdClient()).getFirstName()
+                + "\n" + db.getClientById(booking.getIdClient()).getContactPhoneNumber());
         
         this.setStyle("-fx-background-color: #"+ col +";"
                 + " -fx-border-width : 1px;"
