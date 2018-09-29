@@ -120,7 +120,7 @@ public final class Database {
         boolean success = false;
         try {
             con = DriverManager.getConnection("jdbc:derby:" + dbName + ";", username, password);
-            
+            success = true;
         } catch (SQLException e) {
             System.err.println(e);
         }

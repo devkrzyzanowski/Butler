@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
+import pl.devkrzyzanowski.butler.MainApp;
 import pl.devkrzyzanowski.butler.Model.Database;
 import pl.devkrzyzanowski.butler.utils.validators.DbNameValidator;
 import pl.devkrzyzanowski.butler.utils.validators.DirValidator;
@@ -96,12 +97,11 @@ public class addNewDataBaseDialogController implements Initializable {
         dbUser = dbUserTextField.getText();
         dbPassword = dbPasswordPasswordField.getText();
         
-        Database db = new Database();
-        db.loadDriver();
-        db.create(dbDir, dbName);
-        db.addReadWriteUser(dbUser, dbPassword);
-        db.initAuthentication();
-        db.close();
+        MainApp.databaseManager.loadDriver();
+        MainApp.databaseManager.create(dbDir, dbName);
+        MainApp.databaseManager.addReadWriteUser(dbUser, dbPassword);
+        MainApp.databaseManager.initAuthentication();
+        MainApp.databaseManager.close();
         }
     }
 

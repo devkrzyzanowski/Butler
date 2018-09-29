@@ -144,6 +144,35 @@ public class StageManager {
         return newStage;            
     }
     
+    public Stage addModalStageWithoutMaximize(Window owner, String fxml) {
+       Stage newStage = new Stage();
+        Integer flag = 0;
+        if (owner == null) flag += 1;
+        if (fxml == null || "".equals(fxml)) flag += 2;
+        
+        switch (flag) {
+            case 0:
+                Scene scene = new Scene(getParent(fxml));
+                newStage.setScene(scene);
+                newStage.initModality(Modality.WINDOW_MODAL);
+                newStage.initOwner(owner);
+                newStage.setTitle(bundle.getString("error.undefined"));
+                newStage.setResizable(false);
+                newStage.sizeToScene();
+                newStage.show();   
+                break;
+            case 1: logger.log(Level.WARNING, "owner variable is null!");
+                break;
+            case 2: logger.log(Level.WARNING, "fxml variable is null!");
+                break;
+            case 3: logger.log(Level.WARNING, "owner and fxml variable is null!");
+                break;
+            default: 
+                break;
+        }
+        return newStage;           
+    }
+    
     private Parent getParent(String fxml) {
         lLoader = new FXMLLoader(getClass().getResource(fxml), bundle);
             Parent root;
@@ -159,5 +188,4 @@ public class StageManager {
     public FXMLLoader getLoader() {
         return lLoader;
     }
-    
 }

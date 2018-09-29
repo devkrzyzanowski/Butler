@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="25.0" prefHeight="25.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="butler.controller.fragments.FooterController">
+   <children>
+      <Label layoutX="7.0" layoutY="4.0" text="Baza : " textFill="WHITE" />
+      <Label fx:id="nameOfConnectedDB" layoutX="47.0" layoutY="4.0" text="NIEPOLACZONO" textFill="WHITE" />
+      <Label layoutX="912.0" layoutY="4.0" text="Użytkownik : " textFill="WHITE" />
+      <Label fx:id="nameOfUserDB" layoutX="990.0" layoutY="4.0" text="NIEPOLACZONO" textFill="WHITE" />
+   </children>
+</AnchorPane>
