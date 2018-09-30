@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -29,6 +31,9 @@ import javafx.collections.ObservableList;
 public final class Database {
     private final String driver = "org.apache.derby.jdbc.EmbeddedDriver";
     Connection con = null;
+    
+    private RoomController roomController;
+    private ClientController clientController;
     
     public Database() {
         loadDriver();
@@ -74,13 +79,14 @@ public final class Database {
         try {
             con = DriverManager.getConnection("jdbc:derby:" + directory + 
                     databaseName + ";create=true;");
+            addStructureToDatabase();
         } catch (SQLException e) {
             System.err.println(e);
         }
         return success;
     }
     
-    private boolean addDatabaseStructure() {      
+    private boolean addStructureToDatabase() {      
         boolean success = false;
         try {
             Statement stmt = con.createStatement();
@@ -209,6 +215,29 @@ public final class Database {
         }
         return list;
     }
+ 
+    /**
+     * 
+     * @param message
+     * @param user
+     * @return true on successfully add or false on fail
+     */
+    public boolean addToOperationHistory(String message, String user) throws SQLException {
+        try {
+            con.createStatement().execute("INSERT INTO APP.OPERATION (operation, date, dbUser_idDbUser) VALUES ('"+message+"', CURRENT_TIMESTAMP, 0)");
+            return true;
+        } catch (SQLException e) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
+        public Integer addRoomToDataBase(Room room) {
+            return roomController.add(room, con);
+    }
+        
+        public Integer addClientToDataBase(Client client){
+            return clientController.add(client, con);
+}    
     
     public Legend getLegendById(Integer idLegend) {
         Legend legend = null;

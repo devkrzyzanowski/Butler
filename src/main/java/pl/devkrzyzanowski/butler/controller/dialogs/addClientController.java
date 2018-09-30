@@ -61,7 +61,7 @@ public class addClientController extends DialogBox implements Initializable {
     @FXML private void addClient(ActionEvent event) {
         Client c = createClient();
         db.addClientToDataBase(c);
-        cancelAction(event);
+        //cancelAction(event);
     }
     
     public Button getAddButton(){

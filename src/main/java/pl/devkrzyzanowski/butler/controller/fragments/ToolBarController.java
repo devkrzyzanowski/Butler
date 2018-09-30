@@ -57,7 +57,7 @@ public class ToolBarController implements Initializable {
     }
     
     @FXML private void setScreenToBookingSchedule(ActionEvent event) {
-        setPage(event, "BookingSchedulePage");
+        setPage(event, "bookingSchedulePage");
     }
     @FXML private void setScreenToClientBase(ActionEvent event) {
         setPage(event, "ClientBasePage");
@@ -82,6 +82,6 @@ public class ToolBarController implements Initializable {
     }
     
     private void setPage(ActionEvent event, String path) {
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource()).getScene().getWindow(), "/butler/view/"+path+".fxml");
+        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource()).getScene().getWindow(), "/fxml/"+path+".fxml");
     }  
 }

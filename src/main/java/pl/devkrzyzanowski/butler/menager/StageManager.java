@@ -90,11 +90,11 @@ public class StageManager {
         Integer flag = 0;
         if (stage == null) flag += 1;
         if (fxml == null || "".equals(fxml)) flag += 2;
-
         switch (flag) {
             case 0:
                 Scene scene = new Scene(getParent(fxml), stage.getScene().getWidth(), stage.getScene().getHeight());
                 stage.setScene(scene);
+                stage.setResizable(true);
                 stage.setTitle(bundle.getString("error.undefined"));
                 stage.show();   
                 break;

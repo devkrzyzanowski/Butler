@@ -56,6 +56,6 @@ public class listOfRoomsController implements Initializable {
     
     @FXML private void addRoomAction(ActionEvent event) throws IOException {        
                 MainApp.stageManager.addModalStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/butler/view/dialogs/addRoomDialog.fxml");
+                .getScene().getWindow(), "/fxml/dialogs/addRoomDialog.fxml");
     }    
 }

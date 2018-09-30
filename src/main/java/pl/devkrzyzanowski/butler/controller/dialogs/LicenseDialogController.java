@@ -2,7 +2,7 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package butler.controller.dialogs;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
 import java.net.URL;
 import java.util.ResourceBundle;

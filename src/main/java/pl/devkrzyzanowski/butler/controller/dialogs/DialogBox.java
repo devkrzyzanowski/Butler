@@ -2,7 +2,7 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package butler.controller.dialogs;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

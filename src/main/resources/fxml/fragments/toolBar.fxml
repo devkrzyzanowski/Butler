@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="butler.controller.fragments.ToolBarController">
+<AnchorPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.fragments.ToolBarController">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="1280.0">
          <children>

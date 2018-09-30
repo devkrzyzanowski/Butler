@@ -2,9 +2,8 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package butler.controller.dialogs;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
-import butler.model.Model;
 import butler.utils.Client;
 import butler.utils.Room;
 import java.net.URL;
@@ -18,6 +17,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
 
 /**
  *
@@ -30,12 +31,12 @@ public class selectRoomController extends DialogBox implements Initializable {
     @FXML private TableColumn<Room, Integer> numberOfSingleBedsTableColumn, 
             numberOfDoubleBedsTableColumn, numberOfExtraBedsTableColumn, floorNumberTableColumn;
     @FXML private Button selectRoomButton;
-    private Model model;
+    private Database db;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        model = butler.Butler.model;
-        roomTableView.setItems(model.getRoomList());
+        db = MainApp.databaseManager;
+        roomTableView.setItems(db.getRoomList());
         roomNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
         buildingTableColumn.setCellValueFactory(new PropertyValueFactory<>("building"));
         extraDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("extraDescription"));

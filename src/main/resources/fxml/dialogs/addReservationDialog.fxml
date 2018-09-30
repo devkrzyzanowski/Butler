@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="butler.controller.dialogs.addReservationController">
+   <children>
+      <Button fx:id="cancelButton" layoutX="824.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancelAction" text="Anuluj" />
+      <Button fx:id="addReservationButton" layoutX="691.0" layoutY="561.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="25.0" prefWidth="121.0" text="Dodaj" />
+      <Pane layoutX="15.0" layoutY="15.0" prefHeight="90.0" prefWidth="460.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe; -fx-border-width: 1px;">
+         <children>
+            <Label layoutX="200.0" layoutY="30.0" text="Dzień zakończenia rezerwacji" />
+            <Label layoutX="15.0" layoutY="30.0" text="Dzień rozpoczęcia rezerwacji" />
+            <DatePicker fx:id="fromDatePicker" layoutX="15.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" />
+            <DatePicker fx:id="toDatePicker" layoutX="200.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="nightsNumberTextField" editable="false" layoutX="385.0" layoutY="50.0" prefHeight="25.0" prefWidth="39.0" />
+            <Label layoutX="8.0" layoutY="8.0" text="Okres pobytu">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="385.0" layoutY="30.0" text="Liczba nocy" />
+         </children>
+      </Pane>
+      <Pane layoutX="15.0" layoutY="225.0" prefHeight="200.0" prefWidth="460.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe;">
+         <children>
+            <Button fx:id="selectRoomButton" layoutX="200.0" layoutY="50.0" mnemonicParsing="false" onAction="#openSelectRoomDialog" prefHeight="25.0" prefWidth="120.0" text="Wybierz pokój" />
+            <Label layoutX="8.0" layoutY="8.0" text="Pokój ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="selectRoomTextField" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="170.0" />
+            <Label layoutX="15.0" layoutY="30.0" text="Wybrany pokój" />
+            <Label layoutX="8.0" layoutY="90.0" text="Informacje na temat pokoju" />
+            <TextArea editable="false" layoutX="8.0" layoutY="110.0" prefHeight="84.0" prefWidth="223.0" />
+            <TextArea editable="false" layoutX="230.0" layoutY="110.0" prefHeight="84.0" prefWidth="223.0" />
+            <Label layoutX="230.0" layoutY="90.0" text="Wyposażenie" />
+            <Label layoutX="342.0" layoutY="21.0" prefHeight="17.0" prefWidth="70.0" text="Łóżka" />
+            <Label layoutX="342.0" layoutY="43.0" prefHeight="17.0" prefWidth="70.0" text="Podwójne : " />
+            <Label layoutX="342.0" layoutY="65.0" prefHeight="17.0" prefWidth="70.0" text="Pojedyńcze : " />
+            <Label layoutX="342.0" layoutY="87.0" prefHeight="17.0" prefWidth="70.0" text="Dostawki :" />
+            <Label layoutX="413.0" layoutY="43.0" prefHeight="17.0" prefWidth="27.0" text="00" />
+            <Label layoutX="413.0" layoutY="65.0" prefHeight="17.0" prefWidth="27.0" text="00" />
+            <Label layoutX="413.0" layoutY="87.0" prefHeight="17.0" prefWidth="27.0" text="00" />
+         </children>
+      </Pane>
+      <Pane layoutX="15.0" layoutY="120.0" prefHeight="90.0" prefWidth="460.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe;">
+         <children>
+            <Button fx:id="addN" layoutX="325.0" layoutY="50.0" mnemonicParsing="false" onAction="#openAddNewClientInReservation" prefHeight="25.0" prefWidth="120.0" text="Nowy klient" />
+            <Label layoutX="8.0" layoutY="8.0" text="Gość">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="selectClientTextField" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="170.0" />
+            <Button fx:id="selectClientButton" layoutX="200.0" layoutY="50.0" mnemonicParsing="false" onAction="#openSelectClientDialog" prefHeight="25.0" prefWidth="120.0" text="Wybierz klienta" />
+            <Label layoutX="15.0" layoutY="30.0" text="Rezerwacja na klienta :" />
+         </children>
+      </Pane>
+      <Pane layoutX="490.0" layoutY="440.0" prefHeight="100.0" prefWidth="395.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe;">
+         <children>
+            <Label layoutX="8.0" layoutY="8.0" text="Uwagi do rezerwacji">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextArea layoutX="8.0" layoutY="38.0" prefHeight="56.0" prefWidth="378.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="15.0" layoutY="440.0" prefHeight="100.0" prefWidth="460.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe;">
+         <children>
+            <Label layoutX="8.0" layoutY="8.0" text="Liczba osób">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="selectRoomTextField1" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="selectRoomTextField11" layoutX="90.0" layoutY="50.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="selectRoomTextField12" layoutX="165.0" layoutY="50.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label layoutX="15.0" layoutY="30.0" text="Dorosłych" />
+            <Label layoutX="90.0" layoutY="30.0" text="Dzieci" />
+            <Label layoutX="165.0" layoutY="30.0" text="Dorosłe" />
+            <CheckBox layoutX="243.0" layoutY="54.0" mnemonicParsing="false" text="Zwierzęta" />
+         </children>
+      </Pane>
+      <TabPane layoutX="490.0" layoutY="15.0" prefHeight="260.0" prefWidth="395.0" style="-fx-border-color: #fefefe;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Cena za dobę">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="393.0" style="-fx-background-color: #dddddd;">
+                     <children>
+                        <GridPane layoutX="14.0" layoutY="14.0" prefHeight="60.0" prefWidth="329.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="149.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="27.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="153.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="46.0" layoutY="2.0" text="Liczba dób" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="65.0" layoutY="2.0" text="0" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.rowIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="38.0" layoutY="2.0" text="Cena za dobę" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="65.0" layoutY="2.0" text="0,00" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.rowIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="33.0" layoutY="2.0" text="Cena całkowita " AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="65.0" layoutY="2.0" text="0,00" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefWidth="74.0" GridPane.columnIndex="1" />
+                              <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="11.0" layoutY="2.0" text="x" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="9.0" layoutY="2.0" text="=" AnchorPane.bottomAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                        <Label layoutX="14.0" layoutY="89.0" text="Rabat za nocleg" />
+                        <RadioButton layoutX="113.0" layoutY="89.0" mnemonicParsing="false" selected="true" text="brak" />
+                        <RadioButton layoutX="113.0" layoutY="117.0" mnemonicParsing="false" text="procentowy" />
+                        <RadioButton layoutX="113.0" layoutY="148.0" mnemonicParsing="false" text="kwotowy" />
+                        <TextField layoutX="214.0" layoutY="113.0" prefHeight="25.0" prefWidth="70.0" />
+                        <TextField layoutX="214.0" layoutY="144.0" prefHeight="25.0" prefWidth="70.0" />
+                        <Label layoutX="292.0" layoutY="117.0" text="\%" />
+                        <Label layoutX="293.0" layoutY="148.0" text="zł" />
+                        <Label layoutX="205.0" layoutY="198.0" text="Cena końcowa :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="302.0" layoutY="198.0" text="0,00 zł">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Cena za osobo-dobę">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="87.0" style="-fx-background-color: #dddddd;" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Pane layoutX="490.0" layoutY="290.0" prefHeight="135.0" prefWidth="395.0" style="-fx-background-color: #dddddd; -fx-border-color: #fefefe;">
+         <children>
+            <Label layoutX="8.0" layoutY="8.0" text="Informacje dodatkowe">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="38.0" text="Sposób dojazdu" />
+            <ChoiceBox layoutX="113.0" layoutY="34.0" prefHeight="25.0" prefWidth="100.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

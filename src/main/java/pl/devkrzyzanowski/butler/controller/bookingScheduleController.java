@@ -60,7 +60,7 @@ public class bookingScheduleController implements Initializable {
     
     @FXML private void addReservation(ActionEvent event) {
         MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
-                "/butler/view/dialogs/addReservationDialog.fxml");
+                "/fxml/addReservationDialog.fxml");
         
     }
     

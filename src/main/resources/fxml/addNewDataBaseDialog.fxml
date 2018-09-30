@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.addNewDataBaseDialogController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.AddNewDataBaseDialogController">
    <children>
       <Button fx:id="cancelButton" layoutX="540.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelAction" text="%name.cancel" />
       <Button fx:id="addButton" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" onAction="#addStructure" prefHeight="25.0" prefWidth="121.0" text="%name.add" />

@@ -2,9 +2,8 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package butler.controller.dialogs;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
-import butler.model.Model;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -16,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
 
 /**
  *
@@ -26,12 +27,12 @@ public class connectingToDataBaseController implements Initializable{
     @FXML private ListView<String> infoListView;
     private ObservableList<String> infoObservableList;
 
-    private Model model;
+    private Database db;
     private String nick, password, dbName;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        model = butler.Butler.model;
+        db = MainApp.databaseManager;
         infoObservableList = FXCollections.observableArrayList();
         infoListView.setItems(infoObservableList);
     }
@@ -45,18 +46,17 @@ public class connectingToDataBaseController implements Initializable{
     }
         
     @FXML private void goStart(ActionEvent event) {
-        butler.Butler.stageManager.changeStage((Stage) ((Node) event.getSource())
+        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
             .getScene().getWindow(), "/butler/view/BookingSchedulePage.fxml");
         }   
     
     private void init() {
         infoObservableList.add("Ładowanie sterownika");
-        infoObservableList.add(((model.loadDriver()) ? "Ładowanie sterownika udane" : "Błąd ładowania sterownika"));
+        infoObservableList.add(((db.loadDriver()) ? "Ładowanie sterownika udane" : "Błąd ładowania sterownika"));
 //        infoObservableList.add("Uruchamianie bazy danych");
 //        infoObservableList.add(new String((model.startDataBase(dbName)) ? "Uruchamianie bazy danych udane" : "Uruchamianie bazy danych nieudane"));
         infoObservableList.add("Próba logowania");
-        infoObservableList.add(((model.logInToDataBase(nick, password, dbName)) ? "Połączenie z bazą danych udane" : "Połączenie z bazą danych nieudane"));
-        butler.Butler.USERNAME = nick;
+        //infoObservableList.add(((db.logInToDataBase(nick, password, dbName)) ? "Połączenie z bazą danych udane" : "Połączenie z bazą danych nieudane"));
     }
 
 

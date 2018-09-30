@@ -70,7 +70,7 @@ public class LoginPageController implements Initializable {
     
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
         infoObservableList.add(0,LocalTime.now() + " : Próba połączenia");
-
+        updatePrefs();
         MainApp.databaseManager.loadDriver();
         if (MainApp.databaseManager.login(dirTextField.getText(), usernameTextField.getText(), passwordTextField.getText())) {
         infoObservableList.add(0,LocalTime.now() +  ": Zalogowano jako: " + usernameTextField.getText());

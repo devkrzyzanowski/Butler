@@ -2,10 +2,8 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package butler.controller.dialogs;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
-import butler.controller.OperationHistoryController;
-import butler.model.Model;
 import butler.utils.Client;
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,6 +21,9 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.Model.Database;
+import pl.devkrzyzanowski.butler.controller.OperationHistoryController;
 
 /**
  *
@@ -34,7 +35,7 @@ public class selectClientController extends DialogBox implements Initializable {
             email;
     @FXML private TableColumn<Client, Integer> homeNumber, flatNumber, contactPhoneNumber, zipCode;
     @FXML private Button selectClientButton;
-    private Model model;
+    private Database db;
     
     
     private Consumer<Client> clientSelectCallback;
@@ -45,9 +46,9 @@ public class selectClientController extends DialogBox implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        model = butler.Butler.model;
+        db = MainApp.databaseManager;
         try {
-            clientTableView.setItems(model.getClientList());
+            clientTableView.setItems(db.getClientList());
         } catch (SQLException ex) {
             Logger.getLogger(OperationHistoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
