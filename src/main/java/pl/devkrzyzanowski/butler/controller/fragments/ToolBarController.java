@@ -60,25 +60,25 @@ public class ToolBarController implements Initializable {
         setPage(event, "bookingSchedulePage");
     }
     @FXML private void setScreenToClientBase(ActionEvent event) {
-        setPage(event, "ClientBasePage");
+        setPage(event, "clientBasePage");
     }    
     @FXML private void setScreenToListOfRooms(ActionEvent event) throws SQLException{
         setPage(event, "listOfRoomsPage");
     }    
     @FXML private void setScreenToStatistics(ActionEvent event) {
-        setPage(event, "StatisticsPage");
+        setPage(event, "statisticsPage");
     }
     @FXML private void setScreenToPriceOfRooms(ActionEvent event) {
-        setPage(event, "PriceOfRoomsPage");
+        setPage(event, "priceOfRoomsPage");
     }
     @FXML private void setScreenToSettings(ActionEvent event) {
-        setPage(event, "StatisticsPage");
+        setPage(event, "statisticsPage");
     }
     @FXML private void setScreenToInstitution(ActionEvent event) {
-        setPage(event, "StatisticsPage");
+        setPage(event, "statisticsPage");
     }    
     @FXML private void setScreenToOperationHistory(ActionEvent event) throws SQLException{
-        setPage(event, "OperationHistoryPage");
+        setPage(event, "operationHistoryPage");
     }
     
     private void setPage(ActionEvent event, String path) {

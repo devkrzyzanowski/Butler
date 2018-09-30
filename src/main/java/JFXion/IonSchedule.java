@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import pl.devkrzyzanowski.butler.MainApp;
 import pl.devkrzyzanowski.butler.Model.Database;
+import pl.devkrzyzanowski.butler.controller.dialogs.ModifyBookingController;
 
 /**
  *
@@ -62,9 +63,9 @@ public class IonSchedule extends ScrollPane {
         scheduleCells.forEach((sc) -> {
             sc.setOnMouseClicked((MouseEvent event) -> {
                 MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
-                        "/butler/view/dialogs/modifyBooking.fxml");
-//                ModifyBookingController mdf = MainApp.stageManager.getLoader().getController();
-//                mdf.init(sc.getBooking(), IonSchedule.this); TODO
+                        "/fxml/dialogs/modifyBooking.fxml");
+                ModifyBookingController mdf = MainApp.stageManager.getLoader().getController();
+                mdf.init(sc.getBooking(), IonSchedule.this); 
             });
         });
     }

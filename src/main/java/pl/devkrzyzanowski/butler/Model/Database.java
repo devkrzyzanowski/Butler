@@ -36,6 +36,8 @@ public final class Database {
     private ClientController clientController;
     
     public Database() {
+        roomController = new RoomController();
+        clientController = new ClientController();
         loadDriver();
     }
     
@@ -80,6 +82,7 @@ public final class Database {
             con = DriverManager.getConnection("jdbc:derby:" + directory + 
                     databaseName + ";create=true;");
             addStructureToDatabase();
+            success = true;
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -122,7 +125,7 @@ public final class Database {
             stmt.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(" +
                     "'derby.user." + username + "', '" + password + "')");
             stmt.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(" +
-                    "'derby.database.readOnlyAccessUsers', '" + username + "')");
+                    "'derby.database.fullAccessUsers', '" + username + "')");
             stmt.close();
         } catch (SQLException e) {
                 System.err.println(e);
@@ -255,9 +258,10 @@ public final class Database {
     
     public void setBookingStatus(Integer bookingId, Integer statusId) {
         try {
-            con.createStatement().execute("UPDATE APP.BOOKING SET Legend_idLegend = "+statusId+" WHERE idBooking = "+bookingId+"");
-
-        } catch (SQLException e) {System.out.println(e);}        
+            con.createStatement().execute("UPDATE APP.BOOKING SET Legend_idLegend = " + statusId + " WHERE idBooking = " + bookingId + " ");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }        
     }        
    
     public ObservableList<Legend> getLegendList() {

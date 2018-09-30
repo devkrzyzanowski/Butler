@@ -29,10 +29,10 @@ public class ModifyBookingController extends DialogBox implements Initializable 
     @FXML ComboBox<Legend> selectStatusComboBox;
     private IonSchedule ion;
     private Database db;
+    
     public ModifyBookingController () {
     }
     
-
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
