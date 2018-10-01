@@ -29,7 +29,7 @@ import pl.devkrzyzanowski.butler.controller.OperationHistoryController;
  *
  * @author MichalKrzyzanowski
  */
-public class xselectClientController extends DialogBox implements Initializable {
+public class SelectClientController extends DialogBox implements Initializable {
     @FXML private TableView<Client> clientTableView;
     @FXML private TableColumn<Client, String> firstName, lastName, city, street,
             email;

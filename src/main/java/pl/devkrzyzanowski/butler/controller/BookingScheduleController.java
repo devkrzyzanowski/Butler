@@ -27,7 +27,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author Admin
  */
-public class xBookingScheduleController implements Initializable {
+public class BookingScheduleController implements Initializable {
     @FXML private AnchorPane main;
     @FXML private Pane legendPane;
     @FXML private ScrollPane legendScrollPane;

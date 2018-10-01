@@ -28,7 +28,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author Michał
  */
-public class xaddReservationController extends DialogBox implements Initializable {
+public class AddReservationController extends DialogBox implements Initializable {
     
     @FXML TextField selectClientTextField, selectRoomTextField;
     @FXML DatePicker fromDatePicker, toDatePicker;
@@ -59,7 +59,7 @@ public class xaddReservationController extends DialogBox implements Initializabl
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        xselectClientController sCC = fXMLLoader.getController();
+        SelectClientController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {
             selectedClient = sCC.getTable().getSelectionModel().getSelectedItem();
             selectClientTextField.setText(selectedClient.getFirstName() + " " + selectedClient.getLastName());
@@ -77,7 +77,7 @@ public class xaddReservationController extends DialogBox implements Initializabl
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/addClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        xaddClientController aCC = fXMLLoader.getController();
+        AddClientController aCC = fXMLLoader.getController();
         aCC.getAddButton().setOnAction(e -> {
             selectedClient = aCC.createClient();
             selectClientTextField.setText(selectedClient.getFirstName() + " " + selectedClient.getLastName());
@@ -96,7 +96,7 @@ public class xaddReservationController extends DialogBox implements Initializabl
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectRoomDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        xselectRoomController sCC = fXMLLoader.getController();
+        SelectRoomController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {
             selectedRoom = sCC.getTable().getSelectionModel().getSelectedItem();
             selectRoomTextField.setText(selectedRoom.getRoomName());

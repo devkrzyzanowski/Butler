@@ -34,7 +34,7 @@ import pl.devkrzyzanowski.butler.utils.validators.UserValidator;
  *
  * @author MichalKrzyzanowski
  */
-public class xaddNewDataBaseDialogController implements Initializable {
+public class AddNewDataBaseDialogController implements Initializable {
 
     @FXML
     private Button cancelButton;
