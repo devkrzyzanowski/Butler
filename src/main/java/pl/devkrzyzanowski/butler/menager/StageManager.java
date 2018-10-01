@@ -14,9 +14,10 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 /**
@@ -49,7 +50,6 @@ public class StageManager {
     
     /**
      *
-     * @param stage
      * @param fxml
      * @return 0 on succes, 1 if stage is null, 2 if fxml is null, 3 if stage 
      * and fxml is null
@@ -62,8 +62,6 @@ public class StageManager {
         switch (flag) {
             case 0:
                 stage.setScene(new Scene(getParent(fxml)));
-                stage.setResizable(false);
-                stage.sizeToScene();
                 stage.setTitle(bundle.getString("error.undefined"));
                 stage.show();   
                 logger.log(Level.INFO, "Create a new stage from path : {0}", fxml);
@@ -95,7 +93,6 @@ public class StageManager {
             case 0:
                 Scene scene = new Scene(getParent(fxml));
                 stage.setScene(scene);
-                stage.setResizable(true);
                 stage.setTitle(bundle.getString("error.undefined"));
                 stage.show();   
                 break;
@@ -176,7 +173,7 @@ public class StageManager {
     
     private Parent getParent(String fxml) {
         lLoader = new FXMLLoader(getClass().getResource(fxml), bundle);
-            Parent root;
+            Parent root = null;
         try {
             root = lLoader.load();
         } catch (IOException e) {

@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
@@ -23,11 +24,11 @@ import pl.devkrzyzanowski.butler.MainApp;
  */
 public class ToolBarController implements Initializable {
 
-    @FXML Button bookingScheduleButton, clientBaseButton, listOfRoomsButton,
+    @FXML ToggleButton bookingScheduleButton, clientBaseButton, listOfRoomsButton,
             statisticsButton, priceOfRoomsButton, settingsButton,
             institutionButton, operationHistoryButton, sendBugButton;
     
-    private ArrayList<Button> buttons;
+    private ArrayList<ToggleButton> buttons;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,7 +63,7 @@ public class ToolBarController implements Initializable {
     @FXML private void setScreenToClientBase(ActionEvent event) {
         setPage(event, "clientBasePage");
     }    
-    @FXML private void setScreenToListOfRooms(ActionEvent event) throws SQLException{
+    @FXML private void setScreenToListOfRooms(ActionEvent event) {
         setPage(event, "listOfRoomsPage");
     }    
     @FXML private void setScreenToStatistics(ActionEvent event) {
@@ -77,7 +78,7 @@ public class ToolBarController implements Initializable {
     @FXML private void setScreenToInstitution(ActionEvent event) {
         setPage(event, "statisticsPage");
     }    
-    @FXML private void setScreenToOperationHistory(ActionEvent event) throws SQLException{
+    @FXML private void setScreenToOperationHistory(ActionEvent event) {
         setPage(event, "operationHistoryPage");
     }
     
