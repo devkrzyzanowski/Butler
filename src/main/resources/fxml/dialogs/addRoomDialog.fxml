@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import org.controlsfx.control.ListSelectionView?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.dialogs.AddRoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.dialogs.addRoomController">
    <children>
       <Button fx:id="cancelButton" layoutX="731.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancelAction" text="Anuluj" />
       <Button fx:id="addRoomButton" layoutX="600.0" layoutY="561.0" mnemonicParsing="false" onAction="#addRoom" prefHeight="25.0" prefWidth="121.0" text="Dodaj" />
