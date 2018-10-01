@@ -5,14 +5,11 @@
 package pl.devkrzyzanowski.butler.controller.dialogs;
 
 import butler.utils.Client;
-import butler.utils.Legend;
 import butler.utils.Room;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -42,8 +38,6 @@ public class addReservationController extends DialogBox implements Initializable
     private Room selectedRoom;
     private Database db;
    
-    
-    
         @Override
     public void initialize(URL location, ResourceBundle resources) {
         db = MainApp.databaseManager;
@@ -63,7 +57,7 @@ public class addReservationController extends DialogBox implements Initializable
     
     @FXML private void openSelectClientDialog(ActionEvent event) throws IOException{
         Stage stage = new Stage();            
-        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/butler/view/dialogs/selectClientDialog.fxml"));
+        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
         selectClientController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {
@@ -81,7 +75,7 @@ public class addReservationController extends DialogBox implements Initializable
     }
     @FXML private void openAddNewClientInReservation(ActionEvent event) throws IOException{
         Stage stage = new Stage();            
-        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/butler/view/dialogs/addClientDialog.fxml"));
+        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/addClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
         addClientController aCC = fXMLLoader.getController();
         aCC.getAddButton().setOnAction(e -> {
@@ -100,7 +94,7 @@ public class addReservationController extends DialogBox implements Initializable
     
     @FXML private void openSelectRoomDialog(ActionEvent event) throws IOException{
         Stage stage = new Stage();            
-        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/butler/view/dialogs/selectRoomDialog.fxml"));
+        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectRoomDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
         selectRoomController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {

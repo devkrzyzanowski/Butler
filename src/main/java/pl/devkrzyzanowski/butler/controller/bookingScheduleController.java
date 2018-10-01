@@ -60,7 +60,7 @@ public class bookingScheduleController implements Initializable {
     
     @FXML private void addReservation(ActionEvent event) {
         MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
-                "/fxml/addReservationDialog.fxml");
+                "/fxml/dialogs/addReservationDialog.fxml");
         
     }
     
@@ -79,5 +79,4 @@ public class bookingScheduleController implements Initializable {
             ionSchedule.update();
 }
     
-
 }

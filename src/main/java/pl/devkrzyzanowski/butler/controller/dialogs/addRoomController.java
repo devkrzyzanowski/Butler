@@ -79,10 +79,7 @@ public class addRoomController extends DialogBox implements Initializable {
                     numberOfExtraBeds, floorNumber, priceOfroom, priceOfAdult,
                     priceOfMinor, smallDescription, bigDescription, 
                     extraDescription, building, selectedItems);
-            try{
             db.addRoomToDataBase(room);
-            } catch (Exception e){
-                System.out.println("|" + e);
-            }
+
         }
 }
