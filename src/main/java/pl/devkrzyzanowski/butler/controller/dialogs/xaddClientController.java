@@ -20,7 +20,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author Michał
  */
-public class AddClientController extends DialogBox implements Initializable {
+public class xaddClientController extends DialogBox implements Initializable {
     @FXML private Button addClientButton;
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;

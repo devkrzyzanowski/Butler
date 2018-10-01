@@ -26,7 +26,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author uwxyy
  */
-public class AddRoomController extends DialogBox implements Initializable {
+public class xaddRoomController extends DialogBox implements Initializable {
     
     @FXML private TextField roomNameTextField;
     @FXML private ChoiceBox<Integer> numberOfSingleBedsChoiceBox;

@@ -15,10 +15,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.AddNewDataBaseDialogController">
    <children>
-      <Button fx:id="cancelButton" layoutX="540.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelAction" text="%name.cancel" />
-      <Button fx:id="addButton" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" onAction="#addStructure" prefHeight="25.0" prefWidth="121.0" text="%name.add" />
-      <Hyperlink layoutX="14.0" layoutY="227.0" text="%name.help" />
-      <GridPane layoutX="14.0" layoutY="7.0" prefHeight="160.0" prefWidth="575.0">
+      <GridPane layoutX="13.0" layoutY="27.0" prefHeight="160.0" prefWidth="575.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="141.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.0" minWidth="10.0" prefWidth="219.0" />
@@ -34,6 +31,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <TextField fx:id="dbDirectoryTextField" editable="false" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip text="%tooltip.dirRequirements" />
+               </tooltip></TextField>
             <TextField fx:id="dbNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <tooltip>
                   <Tooltip text="%tooltip.dbNameRequirements" />
@@ -46,6 +47,10 @@
                <tooltip>
                   <Tooltip text="%tooltip.passwordRequirements" />
                </tooltip></PasswordField>
+            <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <tooltip>
+                  <Tooltip text="%tooltip.rePasswordRequirements" />
+               </tooltip></PasswordField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbName" textFill="#555555" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbUser" textFill="#555555" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbPassword" textFill="#555555" GridPane.rowIndex="4" />
@@ -55,15 +60,7 @@
                   <Insets left="5.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="dbDirectoryTextField" editable="false" GridPane.columnIndex="1">
-               <tooltip>
-                  <Tooltip text="%tooltip.dirRequirements" />
-               </tooltip></TextField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.dbCheckPassword" GridPane.rowIndex="5" />
-            <PasswordField fx:id="dbPasswordCheckPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <tooltip>
-                  <Tooltip text="%tooltip.rePasswordRequirements" />
-               </tooltip></PasswordField>
             <Label alignment="CENTER_RIGHT" prefWidth="115.0" text="%createDatabase.url" GridPane.rowIndex="2" />
             <Label fx:id="dbUrlLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="dbNameErrorLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -113,5 +110,8 @@
             </Pane>
          </children>
       </GridPane>
+      <Button fx:id="cancelButton" layoutX="540.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelAction" text="%name.cancel" />
+      <Button fx:id="addButton" layoutX="415.0" layoutY="226.0" mnemonicParsing="false" onAction="#addStructure" prefHeight="25.0" prefWidth="121.0" text="%name.add" />
+      <Hyperlink layoutX="14.0" layoutY="227.0" text="%name.help" />
    </children>
 </Pane>

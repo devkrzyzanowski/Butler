@@ -5,14 +5,11 @@
 package pl.devkrzyzanowski.butler.controller.dialogs;
 
 import butler.utils.Client;
-import butler.utils.Legend;
 import butler.utils.Room;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,7 +28,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author Michał
  */
-public class AddReservationController extends DialogBox implements Initializable {
+public class xaddReservationController extends DialogBox implements Initializable {
     
     @FXML TextField selectClientTextField, selectRoomTextField;
     @FXML DatePicker fromDatePicker, toDatePicker;
@@ -42,8 +38,6 @@ public class AddReservationController extends DialogBox implements Initializable
     private Room selectedRoom;
     private Database db;
    
-    
-    
         @Override
     public void initialize(URL location, ResourceBundle resources) {
         db = MainApp.databaseManager;
@@ -65,7 +59,7 @@ public class AddReservationController extends DialogBox implements Initializable
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        SelectClientController sCC = fXMLLoader.getController();
+        xselectClientController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {
             selectedClient = sCC.getTable().getSelectionModel().getSelectedItem();
             selectClientTextField.setText(selectedClient.getFirstName() + " " + selectedClient.getLastName());
@@ -83,7 +77,7 @@ public class AddReservationController extends DialogBox implements Initializable
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/addClientDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        AddClientController aCC = fXMLLoader.getController();
+        xaddClientController aCC = fXMLLoader.getController();
         aCC.getAddButton().setOnAction(e -> {
             selectedClient = aCC.createClient();
             selectClientTextField.setText(selectedClient.getFirstName() + " " + selectedClient.getLastName());
@@ -102,7 +96,7 @@ public class AddReservationController extends DialogBox implements Initializable
         Stage stage = new Stage();            
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/fxml/dialogs/selectRoomDialog.fxml"));
         Parent parent = (Parent) fXMLLoader.load();
-        SelectRoomController sCC = fXMLLoader.getController();
+        xselectRoomController sCC = fXMLLoader.getController();
         sCC.getSelectedButton().setOnAction(e -> {
             selectedRoom = sCC.getTable().getSelectionModel().getSelectedItem();
             selectRoomTextField.setText(selectedRoom.getRoomName());

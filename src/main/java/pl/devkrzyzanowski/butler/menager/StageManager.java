@@ -33,7 +33,8 @@ public class StageManager {
      */
     public StageManager(Stage stage) {
         this.stage = stage;
-        setBundle("bundles.messages", Locale.getDefault());
+        setBundle("bundles.messages", new Locale("pl", "PL"));
+        
     }
     
     public boolean setBundle(String path, Locale locale) {
@@ -92,7 +93,7 @@ public class StageManager {
         if (fxml == null || "".equals(fxml)) flag += 2;
         switch (flag) {
             case 0:
-                Scene scene = new Scene(getParent(fxml), stage.getScene().getWidth(), stage.getScene().getHeight());
+                Scene scene = new Scene(getParent(fxml));
                 stage.setScene(scene);
                 stage.setResizable(true);
                 stage.setTitle(bundle.getString("error.undefined"));

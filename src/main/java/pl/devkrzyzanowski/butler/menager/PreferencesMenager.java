@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.devkrzyzanowski.butler.utils;
+package pl.devkrzyzanowski.butler.menager;
 import java.util.prefs.Preferences;
 import pl.devkrzyzanowski.butler.MainApp;
 
@@ -11,15 +11,16 @@ import pl.devkrzyzanowski.butler.MainApp;
  *
  * @author Admin
  */
-public class Pref {
-    Preferences userPrefs;
-    Preferences systemPrefs;
+public class PreferencesMenager {
+    private Preferences userPrefs;
+    private Preferences systemPrefs;
     
     private final String SAVE_USERNAME_CHECKBOX = "save_username_checkbox";
     private final String USERNAME = "username";
     private final String DIR = "dir";
+    private final String LOCATION = "Location";
     
-    public Pref() {
+    public PreferencesMenager() {
         userPrefs = Preferences.userNodeForPackage(MainApp.class);
         //systemPrefs = Preferences.systemNodeForPackage(MainApp.class);
     }

@@ -15,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -35,7 +34,7 @@ import pl.devkrzyzanowski.butler.utils.validators.UserValidator;
  *
  * @author MichalKrzyzanowski
  */
-public class addNewDataBaseDialogController implements Initializable {
+public class xaddNewDataBaseDialogController implements Initializable {
 
     @FXML
     private Button cancelButton;

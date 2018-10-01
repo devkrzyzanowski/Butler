@@ -15,7 +15,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -23,8 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
-import pl.devkrzyzanowski.butler.Model.Database;
-import pl.devkrzyzanowski.butler.utils.Pref;
+import pl.devkrzyzanowski.butler.menager.PreferencesMenager;
 
 /**
  *
@@ -36,31 +37,18 @@ public class LoginPageController implements Initializable {
     @FXML private PasswordField passwordTextField;
     @FXML private Button loginButton;
     @FXML private CheckBox rememberLoginCheckBox;
-    @FXML private ListView<String> infoListView;
-    
-    private ObservableList<String> infoObservableList;
     
     private ResourceBundle rb;
-    private Pref pref;
+    private PreferencesMenager preferencesMenager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
-        pref = new Pref();
-        infoObservableList = FXCollections.observableArrayList();
-        infoListView.setItems(infoObservableList);
-        infoObservableList.add("test");
-        if (!pref.getPrefUserName().equals("")) {
-        usernameTextField.setText(pref.getPrefUserName());
-        } else {
-            usernameTextField.setText("");
-        }
-        if (!pref.getPrefDir().equals("")) {
-            dirTextField.setText(pref.getPrefDir());
-        } else {
-            dirTextField.setText("");
-        }
-            rememberLoginCheckBox.setSelected(pref.getSaveUserNameCheckBox());
+        preferencesMenager = new PreferencesMenager();
+        
+        usePreferences();
+
+
     }   
 
     @FXML private void addDataBaseStructure(ActionEvent event) {
@@ -69,15 +57,30 @@ public class LoginPageController implements Initializable {
     }
     
     @FXML private void handleLoginButton(ActionEvent event) throws IOException {
-        infoObservableList.add(0,LocalTime.now() + " : Próba połączenia");
         updatePrefs();
         MainApp.databaseManager.loadDriver();
+        
         if (MainApp.databaseManager.login(dirTextField.getText(), usernameTextField.getText(), passwordTextField.getText())) {
-        infoObservableList.add(0,LocalTime.now() +  ": Zalogowano jako: " + usernameTextField.getText());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Message Here...");
+            alert.setHeaderText("Look, an Information Dialog");
+            alert.setContentText("I have a great message for you!");
+            alert.showAndWait().ifPresent(rs -> {
+            if (rs == ButtonType.OK) {
         MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
             .getScene().getWindow(), "/fxml/bookingSchedulePage.fxml");
+            }
+        });
         } else {
-            infoObservableList.add(0,LocalTime.now() +  ": Błąd logowania!");   
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Message Here...");
+            alert.setHeaderText("Look, an Information Dialog");
+            alert.setContentText("I have a great message for you!");
+            alert.showAndWait().ifPresent(rs -> {
+            if (rs == ButtonType.OK) {
+                System.out.println("Pressed ERROR.");
+            }
+        });   
         }
     }
     
@@ -95,14 +98,28 @@ public class LoginPageController implements Initializable {
     
     private void updatePrefs() {
         if (rememberLoginCheckBox.selectedProperty().getValue()) {
-            new Pref().setPrefUserName(usernameTextField.getText());
+            new PreferencesMenager().setPrefUserName(usernameTextField.getText());
         } else {
-            new Pref().setPrefUserName("");            
+            new PreferencesMenager().setPrefUserName("");            
         }
         if (!dirTextField.getText().equals("")) {
-            new Pref().setPrefDir(dirTextField.getText());
+            new PreferencesMenager().setPrefDir(dirTextField.getText());
         }
-        pref.setSaveUserNameCheckbox(rememberLoginCheckBox.selectedProperty().getValue());        
+        preferencesMenager.setSaveUserNameCheckbox(rememberLoginCheckBox.selectedProperty().getValue());        
+    }
+    
+    private void usePreferences() {
+        if (!preferencesMenager.getPrefUserName().equals("")) {
+            usernameTextField.setText(preferencesMenager.getPrefUserName());
+        } else {
+            usernameTextField.setText("");
+        }
+        if (!preferencesMenager.getPrefDir().equals("")) {
+            dirTextField.setText(preferencesMenager.getPrefDir());
+        } else {
+            dirTextField.setText("");
+        }
+            rememberLoginCheckBox.setSelected(preferencesMenager.getSaveUserNameCheckBox());
     }
     
     @FXML void showRegulations() {

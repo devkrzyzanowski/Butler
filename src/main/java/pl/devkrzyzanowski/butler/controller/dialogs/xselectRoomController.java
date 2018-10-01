@@ -24,7 +24,7 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author uwxyy
  */
-public class SelectRoomController extends DialogBox implements Initializable {
+public class xselectRoomController extends DialogBox implements Initializable {
     @FXML private TableView<Room> roomTableView;
     @FXML private TableColumn<Room, String> roomNameTableColumn, 
             buildingTableColumn, extraDescriptionTableColumn;
