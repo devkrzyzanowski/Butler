@@ -5,34 +5,28 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.ClientBaseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.ClientBaseController">
    <children>
-      <fx:include source="fragments/menuBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <fx:include layoutY="25.0" source="fragments/toolBar.fxml" />
-      <AnchorPane fx:id="main" layoutY="85.0" prefHeight="690.0" prefWidth="1280.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
-         <children>
-            <TableView fx:id="clientTableView" prefHeight="690.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="firstName" prefWidth="75.0" text="%clientList.table.firstName" />
-                <TableColumn fx:id="lastName" prefWidth="75.0" text="%clientList.table.lastName" />
-                  <TableColumn prefWidth="75.0" text="%clientList.table.address">
-                     <columns>
-                        <TableColumn fx:id="city" prefWidth="105.0" text="%clientList.table.city" />
-                        <TableColumn fx:id="zipCode" prefWidth="75.0" text="%clientList.table.postCode" />
-                        <TableColumn fx:id="street" prefWidth="45.0" text="%clientList.table.street" />
-                        <TableColumn fx:id="homeNumber" prefWidth="75.0" text="%clientList.table.homeNumber" />
-                        <TableColumn fx:id="flatNumber" prefWidth="75.0" text="%clientList.table.flatNumber" />
-                     </columns>
-                  </TableColumn>
-                  <TableColumn fx:id="contactPhoneNumber" prefWidth="128.0" text="%clientList.table.phoneNumber" />
-                  <TableColumn fx:id="email" prefWidth="150.0" text="%clientList.table.email" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-            <Button fx:id="addClientButton" layoutX="1056.0" layoutY="41.0" mnemonicParsing="false" onAction="#openAddClientDialog" text="%clientList.addClient" AnchorPane.rightAnchor="120.0" />
-         </children></AnchorPane>
-      <fx:include layoutY="775.0" source="fragments/footer.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TableView fx:id="clientTableView" layoutY="85.0" prefHeight="690.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="firstName" prefWidth="75.0" text="%clientList.table.firstName" />
+          <TableColumn fx:id="lastName" prefWidth="75.0" text="%clientList.table.lastName" />
+            <TableColumn prefWidth="75.0" text="%clientList.table.address">
+               <columns>
+                  <TableColumn fx:id="city" prefWidth="105.0" text="%clientList.table.city" />
+                  <TableColumn fx:id="zipCode" prefWidth="75.0" text="%clientList.table.postCode" />
+                  <TableColumn fx:id="street" prefWidth="45.0" text="%clientList.table.street" />
+                  <TableColumn fx:id="homeNumber" prefWidth="75.0" text="%clientList.table.homeNumber" />
+                  <TableColumn fx:id="flatNumber" prefWidth="75.0" text="%clientList.table.flatNumber" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="contactPhoneNumber" prefWidth="128.0" text="%clientList.table.phoneNumber" />
+            <TableColumn fx:id="email" prefWidth="150.0" text="%clientList.table.email" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="addClientButton" layoutX="1090.0" layoutY="126.0" mnemonicParsing="false" onAction="#openAddClientDialog" text="%clientList.addClient" AnchorPane.rightAnchor="120.0" />
    </children>
 </AnchorPane>

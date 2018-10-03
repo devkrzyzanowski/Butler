@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="toolBar" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.devkrzyzanowski.butler.controller.fragments.ToolBarC">
+   <children>
+      <HBox layoutY="2.0" maxHeight="60.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0">
+         <children>
+            <Label alignment="CENTER" minHeight="60.0" minWidth="205.0" prefHeight="60.0" prefWidth="205.0" text="BUTLER" textFill="#b9b9b9">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ToggleButton fx:id="bookingScheduleButton" mnemonicParsing="false" onAction="#setPageToBookingSchedule" prefHeight="56.0" prefWidth="120.0" selected="true" text="%toolBar.bookingSchedule" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CALENDAR" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="toolBarButtons" />
+               </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="clientBaseButton" mnemonicParsing="false" onAction="#setPageToClientList" prefHeight="56.0" prefWidth="107.0" text="%toolBar.clientBase" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="BOOK" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="listOfRoomsButton" maxHeight="56.0" minHeight="56.0" mnemonicParsing="false" onAction="#setPageToRoomList" prefHeight="56.0" prefWidth="137.0" text="%toolBar.listOfRooms" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="HOTEL" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="statisticsButton" disable="true" maxHeight="56.0" minHeight="56.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="116.0" text="%toolBar.statistics" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="BAR_CHART" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="priceOfRoomsButton" maxHeight="56.0" minHeight="56.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="100.0" text="%toolBar.pricesOfRooms" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USD" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="settingsButton" disable="true" mnemonicParsing="false" prefHeight="56.0" prefWidth="124.0" text="%toolBar.settings" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="COGS" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="institutionButton" disable="true" mnemonicParsing="false" prefHeight="56.0" prefWidth="124.0" text="%toolBar.officialMatters" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="INSTITUTION" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="operationHistoryButton" maxHeight="56.0" minHeight="56.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="124.0" text="%toolBar.operationHistory" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView glyphName="HISTORY" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="sendBugButton" disable="true" mnemonicParsing="false" prefHeight="56.0" prefWidth="124.0" text="%toolBar.sendBug" textAlignment="CENTER" toggleGroup="$toolBarButtons" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView fill="#bf5f5f" glyphName="BUG" size="36" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="1.0" />
+               </HBox.margin>
+            </ToggleButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

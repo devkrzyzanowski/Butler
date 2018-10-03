@@ -14,9 +14,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
+import pl.devkrzyzanowski.butler.controller.MainPageController;
 
 /**
  *
@@ -24,42 +26,57 @@ import pl.devkrzyzanowski.butler.MainApp;
  */
 public class ToolBarController implements Initializable {
 
-    @FXML ToggleButton bookingScheduleButton, clientBaseButton, listOfRoomsButton,
-            statisticsButton, priceOfRoomsButton, settingsButton,
-            institutionButton, operationHistoryButton, sendBugButton;
+//    @FXML ToggleButton bookingScheduleButton, clientBaseButton, listOfRoomsButton,
+//            statisticsButton, priceOfRoomsButton, settingsButton,
+//            institutionButton, operationHistoryButton, sendBugButton;
+//    
+    @FXML
+    ToggleGroup toolBarButtons;
     
     private ArrayList<ToggleButton> buttons;
+    private MainPageController mainPageController;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        buttons = new ArrayList<>();
-        buttons.add(bookingScheduleButton);
-        buttons.add(clientBaseButton);
-        buttons.add(listOfRoomsButton);
-        buttons.add(statisticsButton);
-        buttons.add(priceOfRoomsButton);
-        buttons.add(settingsButton);
-        buttons.add(institutionButton);
-        buttons.add(operationHistoryButton);
-        buttons.add(sendBugButton);
+//        buttons = new ArrayList<>();
+//        buttons.add(bookingScheduleButton);
+//        buttons.add(clientBaseButton);
+//        buttons.add(listOfRoomsButton);
+//        buttons.add(statisticsButton);
+//        buttons.add(priceOfRoomsButton);
+//        buttons.add(settingsButton);
+//        buttons.add(institutionButton);
+//        buttons.add(operationHistoryButton);
+//        buttons.add(sendBugButton);
         
-        buttons.stream().map((b) -> {
-            b.setOnMouseEntered((MouseEvent event) -> {
-                b.setStyle("-fx-background-color: #999999;"
-                        + "-fx-background-radius: 0;");
-            });
-            return b;
-        }).forEachOrdered((b) -> {
-            b.setOnMouseExited((MouseEvent event) -> {
-                b.setStyle("-fx-background-color: #555555;"
-                        + "-fx-background-radius: 0;");
-            });
-        });
+//        buttons.stream().map((b) -> {
+//            b.setOnMouseEntered((MouseEvent event) -> {
+//                b.setStyle("-fx-background-color: #999999;"
+//                        + "-fx-background-radius: 0;");
+//            });
+//            return b;
+//        }).forEachOrdered((b) -> {
+//            b.setOnMouseExited((MouseEvent event) -> {
+//                b.setStyle("-fx-background-color: #555555;"
+//                        + "-fx-background-radius: 0;");
+//            });
+//        });
     }
+    
+    public void setMainPageController(MainPageController mpc) {
+        this.mainPageController = mpc;
+    }
+ 
+    @FXML private void setPageToBookingSchedule(ActionEvent event) {
+        mainPageController.setContent("bookingSchedule");
+    }    
+    @FXML private void setPageToRoomList(ActionEvent event) {
+        mainPageController.setContent("roomList");        
+    }        
     
     @FXML private void setScreenToBookingSchedule(ActionEvent event) {
         setPage(event, "bookingSchedulePage");
-    }
+    }    
     @FXML private void setScreenToClientBase(ActionEvent event) {
         setPage(event, "clientBasePage");
     }    

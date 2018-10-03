@@ -61,14 +61,14 @@ public class LoginPageController implements Initializable {
         MainApp.databaseManager.loadDriver();
         
         if (MainApp.databaseManager.login(dirTextField.getText(), usernameTextField.getText(), passwordTextField.getText())) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Message Here...");
             alert.setHeaderText("Look, an Information Dialog");
             alert.setContentText("I have a great message for you!");
             alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
-            .getScene().getWindow(), "/fxml/bookingSchedulePage.fxml");
+            MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
+            .getScene().getWindow(), "/fxml/mainPage.fxml");
             }
         });
         } else {
