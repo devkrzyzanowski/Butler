@@ -1,105 +1,73 @@
 /*
- * Here comes the text of your licensed
- * Each line should be prefixed with  * 
+ * Copyright (C) 2018 Michal Krzyzanowski
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package pl.devkrzyzanowski.butler.controller.fragments;
 
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import pl.devkrzyzanowski.butler.MainApp;
 import pl.devkrzyzanowski.butler.controller.MainPageController;
 
 /**
  *
- * @author Michał
+ * @author Michal Krzyzanowski
+ * 
  */
-public class ToolBarController implements Initializable {
-
-//    @FXML ToggleButton bookingScheduleButton, clientBaseButton, listOfRoomsButton,
-//            statisticsButton, priceOfRoomsButton, settingsButton,
-//            institutionButton, operationHistoryButton, sendBugButton;
-//    
+public class ToolBarController {
+    
     @FXML
     ToggleGroup toolBarButtons;
     
-    private ArrayList<ToggleButton> buttons;
-    private MainPageController mainPageController;
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-//        buttons = new ArrayList<>();
-//        buttons.add(bookingScheduleButton);
-//        buttons.add(clientBaseButton);
-//        buttons.add(listOfRoomsButton);
-//        buttons.add(statisticsButton);
-//        buttons.add(priceOfRoomsButton);
-//        buttons.add(settingsButton);
-//        buttons.add(institutionButton);
-//        buttons.add(operationHistoryButton);
-//        buttons.add(sendBugButton);
+    /**  */
+    private MainPageController mainPageController;    
+
+    /**
+     *
+     * @param mainPageController
+     */
+    public void setMainPageController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
+    }
         
-//        buttons.stream().map((b) -> {
-//            b.setOnMouseEntered((MouseEvent event) -> {
-//                b.setStyle("-fx-background-color: #999999;"
-//                        + "-fx-background-radius: 0;");
-//            });
-//            return b;
-//        }).forEachOrdered((b) -> {
-//            b.setOnMouseExited((MouseEvent event) -> {
-//                b.setStyle("-fx-background-color: #555555;"
-//                        + "-fx-background-radius: 0;");
-//            });
-//        });
+    /**
+     * This metod replaces main page content to booking schedule
+     * @return true on success or false on fail changing main page content
+     */
+    @FXML 
+    private boolean setPageToBookingSchedule() {
+        boolean flag = mainPageController.setContent("bookingSchedule");
+        return flag;
     }
-    
-    public void setMainPageController(MainPageController mpc) {
-        this.mainPageController = mpc;
+    /**
+     * This metod replaces main page content to room list
+     * @return flag true on success or false on fail changing main page content
+     */  
+    @FXML 
+    private boolean setPageToRoomList() {
+        boolean flag = mainPageController.setContent("roomList"); 
+        return flag;
     }
- 
-    @FXML private void setPageToBookingSchedule(ActionEvent event) {
-        mainPageController.setContent("bookingSchedule");
-    }    
-    @FXML private void setPageToRoomList(ActionEvent event) {
-        mainPageController.setContent("roomList");        
-    }        
-    
-    @FXML private void setScreenToBookingSchedule(ActionEvent event) {
-        setPage(event, "bookingSchedulePage");
-    }    
-    @FXML private void setScreenToClientBase(ActionEvent event) {
-        setPage(event, "clientBasePage");
-    }    
-    @FXML private void setScreenToListOfRooms(ActionEvent event) {
-        setPage(event, "listOfRoomsPage");
-    }    
-    @FXML private void setScreenToStatistics(ActionEvent event) {
-        setPage(event, "statisticsPage");
+    /**
+     * This metod replaces main page content client list
+     * @return flag true on success or false on fail changing main page content
+     */
+    @FXML 
+    private boolean setPageToClientList() {
+        boolean flag = mainPageController.setContent("clientList");
+        return flag;
     }
-    @FXML private void setScreenToPriceOfRooms(ActionEvent event) {
-        setPage(event, "priceOfRoomsPage");
-    }
-    @FXML private void setScreenToSettings(ActionEvent event) {
-        setPage(event, "statisticsPage");
-    }
-    @FXML private void setScreenToInstitution(ActionEvent event) {
-        setPage(event, "statisticsPage");
-    }    
-    @FXML private void setScreenToOperationHistory(ActionEvent event) {
-        setPage(event, "operationHistoryPage");
-    }
-    
-    private void setPage(ActionEvent event, String path) {
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource()).getScene().getWindow(), "/fxml/"+path+".fxml");
-    }  
+        
+        
 }

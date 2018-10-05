@@ -5,7 +5,6 @@
  */
 package pl.devkrzyzanowski.butler.controller;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,8 +43,6 @@ public class AddNewDataBaseDialogController implements Initializable {
     private Label dbUrlLabel;
     @FXML private Label dbNameErrorLabel, dbUserErrorLabel, dbPasswordLabel, 
             dbPasswordCheckLabel;
-    @FXML private FontAwesomeIconView dbUserValidIco, dbNameValidIco, 
-            dbDirectoryValidIco, dbPasswordValidIco, dbPasswordCheckValidIco;
     @FXML
     private TextField dbDirectoryTextField;    
     @FXML
@@ -121,14 +118,14 @@ public class AddNewDataBaseDialogController implements Initializable {
         dbUrlLabel.setText(dbDirectoryTextField.getText() + dbNameTextField.getText());
     }
     
-    private boolean setValidView(FontAwesomeIconView ico, boolean value) {
+    private boolean setValidView( boolean value) {
         if (value) {
-            ico.setGlyphName("CHECK");
-            ico.setFill(Color.GREEN);
+            //ico.setGlyphName("CHECK");
+            //ico.setFill(Color.GREEN);
             return true;
         } else {
-            ico.setGlyphName("TIMES");
-            ico.setFill(Color.RED);
+            //ico.setGlyphName("TIMES");
+            //ico.setFill(Color.RED);
             return false;
         }
     }
@@ -136,15 +133,15 @@ public class AddNewDataBaseDialogController implements Initializable {
     private boolean valid() {
         boolean flag = true;
         List<Boolean> validList = new ArrayList<>();
-        validList.add(setValidView(dbDirectoryValidIco, new DirValidator()
+        validList.add(setValidView( new DirValidator()
                 .validate(dbDirectoryTextField.getText())));
-        validList.add(setValidView(dbNameValidIco, new DbNameValidator()
+        validList.add(setValidView( new DbNameValidator()
                 .validate(dbNameTextField.getText())));
-        validList.add(setValidView(dbUserValidIco, new UserValidator()
+        validList.add(setValidView( new UserValidator()
                 .validate(dbUserTextField.getText())));
-        validList.add(setValidView(dbPasswordValidIco, new PasswordValidator()
+        validList.add(setValidView( new PasswordValidator()
                 .validate(dbPasswordPasswordField.getText())));    
-        validList.add(setValidView(dbPasswordCheckValidIco, new PasswordValidator()
+        validList.add(setValidView( new PasswordValidator()
                 .validate(dbPasswordCheckPasswordField.getText())));
         
         for (Boolean b : validList) {

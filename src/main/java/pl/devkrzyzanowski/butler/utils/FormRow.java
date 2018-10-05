@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package pl.devkrzyzanowski.butler.utils;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,20 +17,17 @@ import javafx.scene.control.TextField;
 public class FormRow {
         @FXML private Label nameLabel, errorLabel;
         @FXML private TextField textField;
-        private FontAwesomeIconView ico;
         private ResourceBundle rb;
         
     public FormRow() {}
 
-    public FormRow(TextField textField, FontAwesomeIconView ico, Label errorLabel, ResourceBundle rb) {
+    public FormRow(TextField textField, Label errorLabel, ResourceBundle rb) {
         this.textField = textField;
-        this.ico = ico;
         this.errorLabel = errorLabel;
         this.rb = rb;
     }
-    public FormRow(TextField textField, FontAwesomeIconView ico, ResourceBundle rb) {
+    public FormRow(TextField textField, ResourceBundle rb) {
         this.textField = textField;
-        this.ico = ico;
         this.rb = rb;
         errorLabel = null;
     }
