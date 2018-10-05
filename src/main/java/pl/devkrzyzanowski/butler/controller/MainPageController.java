@@ -24,7 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-import pl.devkrzyzanowski.butler.controller.fragments.ToolBarController;
+import pl.devkrzyzanowski.butler.controller.fragments.TopButtonsBarController;
 
 /**
  *
@@ -32,29 +32,32 @@ import pl.devkrzyzanowski.butler.controller.fragments.ToolBarController;
  */
 public class MainPageController implements Initializable {
 
+    /** main and center content on every page */
     @FXML 
     private AnchorPane anchorPane;
     
+    /** resources to internationalization */
     private ResourceBundle resources;
     
+    /** controller used to operate the top bar buttons */
     @FXML
-    private ToolBarController toolBarController;
+    private TopButtonsBarController topButtonsBarController;
     
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resources = resources;
-        toolBarController.setMainPageController(this);
+        topButtonsBarController = new TopButtonsBarController(this);
     }
     /**
      * This metod changing a page to new page from path
-     * @param path path to .fxml file with new page
+     * @param path to .fxml path to file with new page
      * @return true on success changing content, false on fail
      */
     public boolean setContent(String path) {
         boolean flag = false;
-        FXMLLoader lLoader = new FXMLLoader(getClass().getResource("/fxml/pages/" + path + ".fxml"), resources);
-            Parent root = null;
+        FXMLLoader lLoader = new FXMLLoader(getClass().getResource(path), resources);
+            Parent root;
         try {
             root = lLoader.load();
             flag = true;
@@ -65,7 +68,6 @@ public class MainPageController implements Initializable {
             AnchorPane.setTopAnchor(root, 0d);
         } catch (IOException e) {
             System.err.println("error creating parent root! " + e);
-            root = null;
         }
         return flag;
     }

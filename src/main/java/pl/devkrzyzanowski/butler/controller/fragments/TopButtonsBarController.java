@@ -25,19 +25,27 @@ import pl.devkrzyzanowski.butler.controller.MainPageController;
  * @author Michal Krzyzanowski
  * 
  */
-public class ToolBarController {
+public class TopButtonsBarController {
     
+    /** group of buttons */
     @FXML
     ToggleGroup toolBarButtons;
     
-    /**  */
-    private MainPageController mainPageController;    
-
-    /**
-     *
-     * @param mainPageController
+    /** path to booking schedule .fxml file */
+    private final String BOOKING_SCHEDULE_PATH = "/fxml/pages/bookingSchedule.fxml";
+    /** path to room list .fxml content file */
+    private final String ROOM_LIST_PATH = "/fxml/pages/roomList.fxml";
+    /** path to client list .fxml content file */
+    private final String CLIENT_LIST_PATH = "/fxml/pages/clientList.fxml";
+    
+    
+    /** a parent class using this controller to controll top bar buttons  */
+    private final MainPageController mainPageController;    
+    
+    /** init TopButtonsBarController with the use class
+     * @param mainPageController parent class which using this controller
      */
-    public void setMainPageController(MainPageController mainPageController) {
+    public TopButtonsBarController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
         
@@ -47,7 +55,7 @@ public class ToolBarController {
      */
     @FXML 
     private boolean setPageToBookingSchedule() {
-        boolean flag = mainPageController.setContent("bookingSchedule");
+        boolean flag = mainPageController.setContent(BOOKING_SCHEDULE_PATH);
         return flag;
     }
     /**
@@ -56,7 +64,7 @@ public class ToolBarController {
      */  
     @FXML 
     private boolean setPageToRoomList() {
-        boolean flag = mainPageController.setContent("roomList"); 
+        boolean flag = mainPageController.setContent(ROOM_LIST_PATH); 
         return flag;
     }
     /**
@@ -65,9 +73,7 @@ public class ToolBarController {
      */
     @FXML 
     private boolean setPageToClientList() {
-        boolean flag = mainPageController.setContent("clientList");
+        boolean flag = mainPageController.setContent(CLIENT_LIST_PATH);
         return flag;
     }
-        
-        
 }
