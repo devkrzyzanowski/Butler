@@ -18,8 +18,8 @@ package pl.devkrzyzanowski.butler.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import javafx.fxml.FXML;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -36,18 +36,17 @@ public class MainPageController implements Initializable {
     @FXML 
     private AnchorPane anchorPane;
     
-    /** resources to internationalization */
-    private ResourceBundle resources;
-    
     /** controller used to operate the top bar buttons */
     @FXML
     private TopButtonsBarController topButtonsBarController;
-    
+
+    /** resources to internationalization */
+    private ResourceBundle resources;    
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resources = resources;
-        topButtonsBarController = new TopButtonsBarController(this);
+        topButtonsBarController.setMainPageController(this);
     }
     /**
      * This metod changing a page to new page from path

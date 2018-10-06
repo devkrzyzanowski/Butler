@@ -25,11 +25,15 @@ import pl.devkrzyzanowski.butler.controller.MainPageController;
  * @author Michal Krzyzanowski
  * 
  */
-public class TopButtonsBarController extends MainPageFragment {
+public class TopButtonsBarController {
     
     /** group of buttons */
     @FXML
     ToggleGroup toolBarButtons;
+
+    /** a parent class using this controller to controll content  */
+    private MainPageController mainPageController;
+    
     
     /** path to booking schedule .fxml file */
     private final String BOOKING_SCHEDULE_PATH = "/fxml/pages/bookingSchedule.fxml";
@@ -38,11 +42,11 @@ public class TopButtonsBarController extends MainPageFragment {
     /** path to client list .fxml content file */
     private final String CLIENT_LIST_PATH = "/fxml/pages/clientList.fxml";
     
-    /** init TopButtonsBarController with the use class
+    /** set main page controller with the use class
      * @param mainPageController parent class which using this controller
-     */
-    public TopButtonsBarController(MainPageController mainPageController) {
-        super(mainPageController);
+     */       
+    public void setMainPageController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
     }
 
     /**
@@ -51,7 +55,7 @@ public class TopButtonsBarController extends MainPageFragment {
      */
     @FXML 
     private boolean setPageToBookingSchedule() {
-        boolean flag = getMainPageController().setContent(BOOKING_SCHEDULE_PATH);
+        boolean flag = mainPageController.setContent(BOOKING_SCHEDULE_PATH);
         return flag;
     }
     /**
@@ -60,7 +64,7 @@ public class TopButtonsBarController extends MainPageFragment {
      */  
     @FXML 
     private boolean setPageToRoomList() {
-        boolean flag = getMainPageController().setContent(ROOM_LIST_PATH); 
+        boolean flag = mainPageController.setContent(ROOM_LIST_PATH); 
         return flag;
     }
     /**
@@ -69,7 +73,7 @@ public class TopButtonsBarController extends MainPageFragment {
      */
     @FXML 
     private boolean setPageToClientList() {
-        boolean flag = getMainPageController().setContent(CLIENT_LIST_PATH);
+        boolean flag = mainPageController.setContent(CLIENT_LIST_PATH);
         return flag;
     }
 }

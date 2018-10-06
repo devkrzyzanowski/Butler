@@ -19,25 +19,18 @@ package pl.devkrzyzanowski.butler.controller.fragments;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import pl.devkrzyzanowski.butler.Model.Database;
-import pl.devkrzyzanowski.butler.controller.MainPageController;
 
 /**
  *
  * @author Michal Krzyzanowski
  * 
  */
-public class FooterController extends MainPageFragment {
+public class FooterController {
     
     @FXML Label nameOfConnectedDB, nameOfUserDB;
     
     private Database db;
     
-    /** init FooterController with the use class
-     * @param mainPageController parent class which using this controller
-     */    
-    public FooterController(MainPageController mainPageController) {
-        super(mainPageController);
-    }
 
     
 }
