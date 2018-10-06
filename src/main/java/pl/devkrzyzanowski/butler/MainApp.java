@@ -1,30 +1,29 @@
 package pl.devkrzyzanowski.butler;
 
+import java.time.LocalTime;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import pl.devkrzyzanowski.butler.Model.Database;
 import pl.devkrzyzanowski.butler.menager.StageManager;
 
 
 public class MainApp extends Application {
     public static StageManager stageManager;
+    public static Database databaseManager;
+    public static LocalTime time;
     protected final Logger logger = Logger.getLogger(getClass().getName());
     
     
     @Override
     public void start(Stage stage) throws Exception {
-        stageManager = new StageManager(stage, "/fxml/loginPage.fxml");
-        
-        
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/styles/Styles.css");
-//        
-//        stage.setTitle("JavaFX and Maven");
-//        stage.setScene(scene);
-//        stage.show();
+        stageManager = new StageManager(stage);
+        databaseManager = new Database();
+        stageManager.newStage("/fxml/loginPage.fxml");
     }
+    
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.

@@ -16,7 +16,7 @@
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>Your Organisation</name>
+        <name>Michal Krzyzanowski</name>
     </organization>
 
     <build>
@@ -121,16 +121,21 @@
             <artifactId>javafx-maven-plugin</artifactId>
             <version>8.8.3</version>
         </dependency>
-        <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx</artifactId>
-            <version>8.9</version>
+            <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.8.3.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
             <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.40.14</version>
         </dependency>
     </dependencies>
 </project>

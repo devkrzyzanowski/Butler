@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -26,13 +28,14 @@ public class StageManager {
     private ResourceBundle bundle;
     private FXMLLoader lLoader;
     protected final Logger logger = Logger.getLogger(getClass().getName());
-    
+    private Stage stage;
     /**
      *
      */
-    public StageManager(Stage stage, String fxml) {
-        setBundle("bundles.messages", Locale.getDefault());
-        newStage(stage, fxml);
+    public StageManager(Stage stage) {
+        this.stage = stage;
+        setBundle("bundles.messages", new Locale("pl", "PL"));
+        
     }
     
     public boolean setBundle(String path, Locale locale) {
@@ -47,12 +50,11 @@ public class StageManager {
     
     /**
      *
-     * @param stage
      * @param fxml
      * @return 0 on succes, 1 if stage is null, 2 if fxml is null, 3 if stage 
      * and fxml is null
      */
-    public Integer newStage(Stage stage, String fxml) {
+    public Integer newStage(String fxml) {
         Integer flag = 0;
         if (stage == null) flag += 1;
         if (fxml == null || "".equals(fxml)) flag += 2;
@@ -87,10 +89,9 @@ public class StageManager {
         Integer flag = 0;
         if (stage == null) flag += 1;
         if (fxml == null || "".equals(fxml)) flag += 2;
-
         switch (flag) {
             case 0:
-                Scene scene = new Scene(getParent(fxml), stage.getScene().getWidth(), stage.getScene().getHeight());
+                Scene scene = new Scene(getParent(fxml));
                 stage.setScene(scene);
                 stage.setTitle(bundle.getString("error.undefined"));
                 stage.show();   
@@ -114,7 +115,8 @@ public class StageManager {
      * @return 0 on succes, 1 if stage is null, 2 if fxml is null, 3 if stage 
      * and fxml is null
      */
-    public Integer addModalStage(Window owner, String fxml) {
+    public Stage addModalStage(Window owner, String fxml) {
+        Stage newStage = new Stage();
         Integer flag = 0;
         if (owner == null) flag += 1;
         if (fxml == null || "".equals(fxml)) flag += 2;
@@ -122,12 +124,11 @@ public class StageManager {
         switch (flag) {
             case 0:
                 Scene scene = new Scene(getParent(fxml));
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(owner);
-                stage.setTitle(bundle.getString("error.undefined"));
-                stage.show();   
+                newStage.setScene(scene);
+                newStage.initModality(Modality.WINDOW_MODAL);
+                newStage.initOwner(owner);
+                newStage.setTitle(bundle.getString("error.undefined"));
+                newStage.show();   
                 break;
             case 1: logger.log(Level.WARNING, "owner variable is null!");
                 break;
@@ -138,12 +139,41 @@ public class StageManager {
             default: 
                 break;
         }
-        return flag;            
+        return newStage;            
+    }
+    
+    public Stage addModalStageWithoutMaximize(Window owner, String fxml) {
+       Stage newStage = new Stage();
+        Integer flag = 0;
+        if (owner == null) flag += 1;
+        if (fxml == null || "".equals(fxml)) flag += 2;
+        
+        switch (flag) {
+            case 0:
+                Scene scene = new Scene(getParent(fxml));
+                newStage.setScene(scene);
+                newStage.initModality(Modality.WINDOW_MODAL);
+                newStage.initOwner(owner);
+                newStage.setTitle(bundle.getString("error.undefined"));
+                newStage.setResizable(false);
+                newStage.sizeToScene();
+                newStage.show();   
+                break;
+            case 1: logger.log(Level.WARNING, "owner variable is null!");
+                break;
+            case 2: logger.log(Level.WARNING, "fxml variable is null!");
+                break;
+            case 3: logger.log(Level.WARNING, "owner and fxml variable is null!");
+                break;
+            default: 
+                break;
+        }
+        return newStage;           
     }
     
     private Parent getParent(String fxml) {
         lLoader = new FXMLLoader(getClass().getResource(fxml), bundle);
-            Parent root;
+            Parent root = null;
         try {
             root = lLoader.load();
         } catch (IOException e) {
@@ -156,5 +186,4 @@ public class StageManager {
     public FXMLLoader getLoader() {
         return lLoader;
     }
-    
 }

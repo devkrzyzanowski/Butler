@@ -1,0 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pl.devkrzyzanowski.butler.utils.validators;
+
+/**
+ *
+ * @author Admin
+ */
+public class EmailValidator {
+    // [a-z0-9_.-]+@[a-z0-9_.-]+\.\w{2,4}
+}
