@@ -25,7 +25,7 @@ import pl.devkrzyzanowski.butler.controller.MainPageController;
  * @author Michal Krzyzanowski
  * 
  */
-public class TopButtonsBarController {
+public class TopButtonsBarController extends MainPageFragment {
     
     /** group of buttons */
     @FXML
@@ -38,24 +38,20 @@ public class TopButtonsBarController {
     /** path to client list .fxml content file */
     private final String CLIENT_LIST_PATH = "/fxml/pages/clientList.fxml";
     
-    
-    /** a parent class using this controller to controll top bar buttons  */
-    private final MainPageController mainPageController;    
-    
     /** init TopButtonsBarController with the use class
      * @param mainPageController parent class which using this controller
      */
     public TopButtonsBarController(MainPageController mainPageController) {
-        this.mainPageController = mainPageController;
+        super(mainPageController);
     }
-        
+
     /**
      * This metod replaces main page content to booking schedule
      * @return true on success or false on fail changing main page content
      */
     @FXML 
     private boolean setPageToBookingSchedule() {
-        boolean flag = mainPageController.setContent(BOOKING_SCHEDULE_PATH);
+        boolean flag = getMainPageController().setContent(BOOKING_SCHEDULE_PATH);
         return flag;
     }
     /**
@@ -64,7 +60,7 @@ public class TopButtonsBarController {
      */  
     @FXML 
     private boolean setPageToRoomList() {
-        boolean flag = mainPageController.setContent(ROOM_LIST_PATH); 
+        boolean flag = getMainPageController().setContent(ROOM_LIST_PATH); 
         return flag;
     }
     /**
@@ -73,7 +69,7 @@ public class TopButtonsBarController {
      */
     @FXML 
     private boolean setPageToClientList() {
-        boolean flag = mainPageController.setContent(CLIENT_LIST_PATH);
+        boolean flag = getMainPageController().setContent(CLIENT_LIST_PATH);
         return flag;
     }
 }
