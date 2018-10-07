@@ -1,17 +1,28 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2018 Michal Krzyzanowski
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package pl.devkrzyzanowski.butler.Model;
 
+import butler.sql.SQLcommands;
+import butler.utils.AdditionalRoomItems;
 import butler.utils.Booking;
 import butler.utils.Client;
 import butler.utils.Legend;
 import butler.utils.OperationHistory;
 import butler.utils.Room;
-import butler.sql.SQLcommands;
-import butler.utils.AdditionalRoomItems;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,33 +37,49 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Admin
+ * @author Michal Krzyzanowski
  */
 public final class Database {
-    private final String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+    /** string path to name of DRIVER begin used */
+    private final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    /** connection */
     Connection con = null;
     
     private RoomController roomController;
     private ClientController clientController;
     
+    /**
+     *
+     */
     public Database() {
         roomController = new RoomController();
         clientController = new ClientController();
         loadDriver();
     }
     
+    /**
+     * method for load defined driver = {@value #DRIVER}
+     * @return true on success false on fail
+     */
     public boolean loadDriver() {
         boolean success = false;
         try {
-            Class.forName(driver);
+            Class.forName(DRIVER);
             success = true;
-            System.out.println(driver + " loaded.");
+            System.out.println(DRIVER + " loaded.");
         } catch (ClassNotFoundException e) {
             System.err.println(e.getMessage());
         }
         return success;
     }
     
+    /**
+     *
+     * @param dbURL
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean connect(String dbURL, String username, String password) {
         boolean success = false;
         try {
@@ -65,10 +92,15 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @param databaseName
+     * @return
+     */
     public boolean open(String databaseName) {
         boolean success = false;
         try {
-            con = DriverManager.getConnection(driver);
+            con = DriverManager.getConnection(DRIVER);
             success = true;
         } catch (SQLException e) {
             System.err.println(e);
@@ -76,6 +108,12 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @param directory
+     * @param databaseName
+     * @return
+     */
     public boolean create(String directory, String databaseName) {
         boolean success = false;
         try {
@@ -118,6 +156,12 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean addReadWriteUser(String username, String password) {
         boolean success = false;
         try {
@@ -133,6 +177,10 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean initAuthentication() {
         boolean success = false;
         try {
@@ -154,6 +202,10 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean close() {
         boolean success = false;
         try {
@@ -165,6 +217,13 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @param dbName
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean login(String dbName, String username, String password) {
         boolean success = false;
         try {
@@ -176,6 +235,15 @@ public final class Database {
         return success;
     }
     
+    /**
+     *
+     * @param value
+     * @param value0
+     * @param selectedClientId
+     * @param selectedRoomId
+     * @param selectedLegendId
+     * @return
+     */
     public boolean addBookingToDataBase(Timestamp value, Timestamp value0, Integer selectedClientId, Integer selectedRoomId, Integer selectedLegendId) {
         try {
             System.out.println(value);
@@ -224,6 +292,7 @@ public final class Database {
      * @param message
      * @param user
      * @return true on successfully add or false on fail
+     * @throws java.sql.SQLException
      */
     public boolean addToOperationHistory(String message, String user) throws SQLException {
         try {
@@ -234,14 +303,30 @@ public final class Database {
             return false;
         }
     }
-        public Integer addRoomToDataBase(Room room) {
+
+    /**
+     *
+     * @param room
+     * @return
+     */
+    public Integer addRoomToDataBase(Room room) {
             return roomController.add(room, con);
     }
         
-        public Integer addClientToDataBase(Client client){
+    /**
+     *
+     * @param client
+     * @return
+     */
+    public Integer addClientToDataBase(Client client){
             return clientController.add(client, con);
 }    
     
+    /**
+     *
+     * @param idLegend
+     * @return
+     */
     public Legend getLegendById(Integer idLegend) {
         Legend legend = null;
         try (Statement stmt = con.createStatement()) {
@@ -256,6 +341,11 @@ public final class Database {
         return legend;       
     }  
     
+    /**
+     *
+     * @param bookingId
+     * @param statusId
+     */
     public void setBookingStatus(Integer bookingId, Integer statusId) {
         try {
             con.createStatement().execute("UPDATE APP.BOOKING SET Legend_idLegend = " + statusId + " WHERE idBooking = " + bookingId + " ");
@@ -264,6 +354,10 @@ public final class Database {
         }        
     }        
    
+    /**
+     *
+     * @return
+     */
     public ObservableList<Legend> getLegendList() {
         ObservableList<Legend> legends = FXCollections.observableArrayList();
         try (Statement stmt = con.createStatement()) {
@@ -278,6 +372,11 @@ public final class Database {
         return legends;
     }    
     
+    /**
+     *
+     * @param idClient
+     * @return
+     */
     public Client getClientById(Integer idClient) {
             Client returnedClient = null;
        try (Statement stmt = con.createStatement()) {
@@ -303,6 +402,11 @@ public final class Database {
        return returnedClient;
     }    
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ObservableList<Client> getClientList() throws SQLException {
         ObservableList<Client> list = FXCollections.observableArrayList();
         try (Statement stmt = con.createStatement()){
@@ -329,6 +433,10 @@ public final class Database {
         return list;        
     }    
     
+    /**
+     *
+     * @param id
+     */
     public void removeBookingById(Integer id) {
         try {
             con.createStatement().execute("DELETE FROM APP.BOOKING WHERE idBooking = "+id+"");
@@ -336,6 +444,12 @@ public final class Database {
         }
     }    
     
+    /**
+     *
+     * @param roomId
+     * @return
+     * @throws SQLException
+     */
     public Room getRoomById(Integer roomId) throws SQLException {
             Room returnedRoom = null;
        try (Statement stmt = con.createStatement()) {
@@ -379,6 +493,10 @@ public final class Database {
        return returnedRoom;
     }
 
+    /**
+     *
+     * @return
+     */
     public ObservableList<Room> getRoomList() {
         ObservableList<Room> list = FXCollections.observableArrayList();
         try (Statement stmt = con.createStatement()){
@@ -425,6 +543,12 @@ public final class Database {
         return (time.after(after) && time.before(before));
     }
 
+    /**
+     *
+     * @param idRoom
+     * @param ts
+     * @return
+     */
     public String roomOwnedBy(Integer idRoom, Timestamp ts) {
         String s = "";
         try (Statement stmt = con.createStatement()) {
@@ -450,6 +574,11 @@ public final class Database {
         return s;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ObservableList<OperationHistory> getOperationHistoryList() throws SQLException {
         ObservableList<OperationHistory> list = FXCollections.observableArrayList();
         try (Statement stmt = con.createStatement()) {
@@ -501,9 +630,18 @@ public final class Database {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getDataBaseName(){
         return "no implement";
     }
+
+    /**
+     *
+     * @return
+     */
     public String getUserName(){
         return "no implement";
     }    
