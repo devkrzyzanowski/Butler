@@ -16,18 +16,18 @@ public class LegendCell extends Pane {
     private Integer idLegend;
     private String text;
     private Color color;
-    private String formattedColor;
-    private Label label;
+    private final String formattedColor;
+    private final Label label;
     
     public LegendCell(String text, Color color) {
         this.text = text;
         this.color = color;
         formattedColor = String.valueOf(color).substring(2, 8);
-        setMinSize(200, 24);
+        this.setMinSize(200, 24);
         label = new Label(text);
         label.setLayoutX(16);
         label.setLayoutY(4);
-        this.getChildren().add(label);
+        boolean add = this.getChildren().add(label);
         this.setStyle("-fx-background-color: #"+formattedColor +";");
     }
 

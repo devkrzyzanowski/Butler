@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2018 Michal Krzyzanowski
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package pl.devkrzyzanowski.butler.menager;
 import java.util.prefs.Preferences;
@@ -12,12 +23,17 @@ import pl.devkrzyzanowski.butler.MainApp;
  * @author Admin
  */
 public class PreferencesMenager {
-    private Preferences userPrefs;
+    /** logged user preferences */
+    private final Preferences userPrefs;
+    /** system preferences */
     private Preferences systemPrefs;
-    
+    /** key name for save username checkbox */
     private final String SAVE_USERNAME_CHECKBOX = "save_username_checkbox";
+    /** key name for username */
     private final String USERNAME = "username";
+    /** key name for directory */
     private final String DIR = "dir";
+    /** key name for selected leanguage */
     private final String LOCATION = "Location";
     
     public PreferencesMenager() {

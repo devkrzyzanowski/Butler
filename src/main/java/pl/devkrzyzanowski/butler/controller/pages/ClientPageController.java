@@ -2,7 +2,7 @@
  * Here comes the text of your licensed
  * Each line should be prefixed with  * 
  */
-package pl.devkrzyzanowski.butler.controller;
+package pl.devkrzyzanowski.butler.controller.pages;
 
 import butler.utils.Client;
 import java.io.IOException;
@@ -21,12 +21,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import pl.devkrzyzanowski.butler.MainApp;
 import pl.devkrzyzanowski.butler.Model.Database;
+import pl.devkrzyzanowski.butler.controller.OperationHistoryController;
 
 /**
  *
  * @author Michał
  */
-public class ClientBaseController implements Initializable {
+public class ClientPageController implements Initializable {
     @FXML private TableView<Client> clientTableView;
     @FXML private TableColumn<Client, String> firstName, lastName, city, street,
             email;
