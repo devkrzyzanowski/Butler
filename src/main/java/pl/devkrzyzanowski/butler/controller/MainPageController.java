@@ -35,11 +35,9 @@ public class MainPageController implements Initializable {
     /** main and center content on every page */
     @FXML 
     private AnchorPane anchorPane;
-    
     /** controller used to operate the top bar buttons */
     @FXML
     private TopButtonsBarController topButtonsBarController;
-
     /** resources to internationalization */
     private ResourceBundle resources;    
     

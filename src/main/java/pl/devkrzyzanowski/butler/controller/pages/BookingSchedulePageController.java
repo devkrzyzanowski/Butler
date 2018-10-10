@@ -1,9 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2018 Michal Krzyzanowski
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.devkrzyzanowski.butler.controller;
+package pl.devkrzyzanowski.butler.controller.pages;
 
 import JFXion.IonSchedule;
 import butler.utils.Legend;
@@ -27,18 +38,24 @@ import pl.devkrzyzanowski.butler.Model.Database;
  *
  * @author Admin
  */
-public class bookingScheduleController implements Initializable {
-    @FXML private AnchorPane main;
-    @FXML private Pane legendPane;
-    @FXML private ScrollPane legendScrollPane;
-    @FXML private Button addReservationButton, removeReservationButton, modifyReservationButton;
-    @FXML private Button selectClientButton, refreshButton;
+public class BookingSchedulePageController implements Initializable {
+    @FXML
+    private AnchorPane main;
+    @FXML
+    private Pane legendPane;
+    @FXML
+    private ScrollPane legendScrollPane;
+    @FXML
+    private Button addReservationButton, removeReservationButton, modifyReservationButton;
+    @FXML
+    private Button selectClientButton, refreshButton;
     private GridPane legendGridPane;
     
-    @FXML private AnchorPane ionScheduleBox;
+    @FXML
+    private AnchorPane ionScheduleBox;
     private Database db;
     private IonSchedule ionSchedule;
-    @FXML ResourceBundle bundle;    
+    private ResourceBundle bundle;    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

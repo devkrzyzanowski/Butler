@@ -1,16 +1,25 @@
 /*
- * Here comes the text of your licensed
- * Each line should be prefixed with  * 
+ * Copyright (C) 2018 Michal Krzyzanowski
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package pl.devkrzyzanowski.butler.controller;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +28,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
@@ -33,30 +41,50 @@ import pl.devkrzyzanowski.butler.menager.PreferencesMenager;
  */
 public class LoginPageController implements Initializable {
 
-    @FXML private TextField usernameTextField, dirTextField;
-    @FXML private PasswordField passwordTextField;
-    @FXML private Button loginButton;
-    @FXML private CheckBox rememberLoginCheckBox;
-    
+    /** */
+    @FXML
+    private TextField usernameTextField;
+    /** */    
+    @FXML
+    private TextField dirTextField;
+    /** */
+    @FXML
+    private PasswordField passwordTextField;
+    /** */
+    @FXML
+    private Button loginButton;
+    /** */
+    @FXML
+    private CheckBox rememberLoginCheckBox;
+    /** */
     private ResourceBundle rb;
+    /** */
     private PreferencesMenager preferencesMenager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.rb = rb;
-        preferencesMenager = new PreferencesMenager();
-        
+        preferencesMenager = new PreferencesMenager();      
         usePreferences();
-
-
     }   
 
-    @FXML private void addDataBaseStructure(ActionEvent event) {
+    /**
+     * Opening dialog with add database content
+     * @param event 
+     */
+    @FXML
+    private void addDataBaseStructure(ActionEvent event) {
          MainApp.stageManager.addModalStageWithoutMaximize((Stage) ((Node) event.getSource())
                 .getScene().getWindow(), "/fxml/addNewDataBaseDialog.fxml");
     }
     
-    @FXML private void handleLoginButton(ActionEvent event) throws IOException {
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
+    @FXML
+    private void handleLoginButton(ActionEvent event) throws IOException {
         updatePrefs();
         MainApp.databaseManager.loadDriver();
         
@@ -84,8 +112,13 @@ public class LoginPageController implements Initializable {
         }
     }
     
+    /*
     
-    @FXML private void openDirectoryChooseDialog(ActionEvent event) {
+    /**
+    * Open dialog with diretory choose
+    */
+    @FXML
+    private void openDirectoryChooseDialog(ActionEvent event) {
         DirectoryChooser dch = new DirectoryChooser();
         File selectedDirectory = 
                 dch.showDialog(((Node) event.getSource()).getScene().getWindow());

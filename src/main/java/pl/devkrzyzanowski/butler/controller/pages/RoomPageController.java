@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.devkrzyzanowski.butler.utils.validators;
+package pl.devkrzyzanowski.butler.controller.pages;
 
 /**
  *
  * @author Michal Krzyzanowski
  */
-public interface IValidator {
-    public boolean validate(final String data);
+public class RoomPageController {
+    
 }
