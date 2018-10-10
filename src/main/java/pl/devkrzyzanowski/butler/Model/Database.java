@@ -42,6 +42,8 @@ import javafx.collections.ObservableList;
 public final class Database {
     /** string path to name of DRIVER begin used */
     private final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    /** */
+    private final String DRIVER_PREFIX = "jdbc:derby:";
     /** connection */
     Connection con = null;
     
@@ -74,16 +76,16 @@ public final class Database {
     }
     
     /**
-     *
-     * @param dbURL
-     * @param username
-     * @param password
+     * connecting to a database of a specific user
+     * @param dbURL url to database
+     * @param username username to connect to database
+     * @param password password to connect to datamase
      * @return
      */
     public boolean connect(String dbURL, String username, String password) {
         boolean success = false;
         try {
-            con = DriverManager.getConnection("jdbc:derby:" + dbURL, username, password);
+            con = DriverManager.getConnection(DRIVER_PREFIX + dbURL, username, password);
             success = true;
         } catch (SQLException e) {
             System.err.println(e);
@@ -110,9 +112,9 @@ public final class Database {
     
     /**
      *
-     * @param directory
-     * @param databaseName
-     * @return
+     * @param directory directory path for new database
+     * @param databaseName name of the new database
+     * @return true on success, false on fail
      */
     public boolean create(String directory, String databaseName) {
         boolean success = false;
