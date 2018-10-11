@@ -16,10 +16,26 @@
  */
 package pl.devkrzyzanowski.butler.controller.pages;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import pl.devkrzyzanowski.butler.MainApp;
+
 /**
  *
  * @author Michal Krzyzanowski
  */
 public class RoomPageController {
     
+    
+    
+            @FXML private void addRoomAction(ActionEvent event) {
+                        MainApp.stageManager.addModalStage(((Node) event.getSource()).getScene().getWindow(),
+                "/fxml/dialogs/addRoomDialog.fxml");
+                
+            }
+            @FXML private void modifyRoomAction(ActionEvent event) {
+                
+            }
 }
+
