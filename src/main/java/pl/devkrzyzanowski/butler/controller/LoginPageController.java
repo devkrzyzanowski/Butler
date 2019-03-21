@@ -84,15 +84,15 @@ public class LoginPageController implements Initializable {
      * @throws IOException 
      */
     @FXML
-    private void handleLoginButton(ActionEvent event) throws IOException {
+    private void handleLoginButton(ActionEvent event) {
         updatePrefs();
         MainApp.databaseManager.loadDriver();
         
         if (MainApp.databaseManager.login(dirTextField.getText(), usernameTextField.getText(), passwordTextField.getText())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Message Here...");
-            alert.setHeaderText("Look, an Information Dialog");
-            alert.setContentText("I have a great message for you!");
+            alert.setTitle("Login");
+            alert.setHeaderText("Login success");
+            alert.setContentText("Login success");
             alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
             MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
@@ -101,9 +101,9 @@ public class LoginPageController implements Initializable {
         });
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Message Here...");
-            alert.setHeaderText("Look, an Information Dialog");
-            alert.setContentText("I have a great message for you!");
+            alert.setTitle("Login");
+            alert.setHeaderText("Login failed");
+            alert.setContentText("Login failed");
             alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
                 System.out.println("Pressed ERROR.");
@@ -115,7 +115,7 @@ public class LoginPageController implements Initializable {
     /*
     
     /**
-    * Open dialog with diretory choose
+    * Open dialog with directory choose
     */
     @FXML
     private void openDirectoryChooseDialog(ActionEvent event) {

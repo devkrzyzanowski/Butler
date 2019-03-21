@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.devkrzyzanowski.butler.controller;
+package pl.devkrzyzanowski.butler.controller.dialogs;
 
 import java.io.File;
 import java.net.URL;
@@ -15,14 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import pl.devkrzyzanowski.butler.MainApp;
-import pl.devkrzyzanowski.butler.Model.Database;
 import pl.devkrzyzanowski.butler.utils.validators.DbNameValidator;
 import pl.devkrzyzanowski.butler.utils.validators.DirValidator;
 import pl.devkrzyzanowski.butler.utils.validators.PasswordValidator;
@@ -33,7 +30,7 @@ import pl.devkrzyzanowski.butler.utils.validators.UserValidator;
  *
  * @author MichalKrzyzanowski
  */
-public class AddNewDataBaseDialogController implements Initializable {
+public class AddNewDataBaseStructureController implements Initializable {
 
     @FXML
     private Button cancelButton;
@@ -118,36 +115,26 @@ public class AddNewDataBaseDialogController implements Initializable {
         dbUrlLabel.setText(dbDirectoryTextField.getText() + dbNameTextField.getText());
     }
     
-    private boolean setValidView( boolean value) {
-        if (value) {
-            //ico.setGlyphName("CHECK");
-            //ico.setFill(Color.GREEN);
-            return true;
-        } else {
-            //ico.setGlyphName("TIMES");
-            //ico.setFill(Color.RED);
-            return false;
-        }
-    }
-    
     private boolean valid() {
         boolean flag = true;
         List<Boolean> validList = new ArrayList<>();
-        validList.add(setValidView( new DirValidator()
-                .validate(dbDirectoryTextField.getText())));
-        validList.add(setValidView( new DbNameValidator()
-                .validate(dbNameTextField.getText())));
-        validList.add(setValidView( new UserValidator()
-                .validate(dbUserTextField.getText())));
-        validList.add(setValidView( new PasswordValidator()
-                .validate(dbPasswordPasswordField.getText())));    
-        validList.add(setValidView( new PasswordValidator()
-                .validate(dbPasswordCheckPasswordField.getText())));
+        validList.add(new DirValidator()
+                .validate(dbDirectoryTextField.getText()));
+        validList.add(new DbNameValidator()
+                .validate(dbNameTextField.getText()));
+        validList.add(new UserValidator()
+                .validate(dbUserTextField.getText()));
+        validList.add(new PasswordValidator()
+                .validate(dbPasswordPasswordField.getText()));
+        validList.add(new PasswordValidator()
+                .validate(dbPasswordCheckPasswordField.getText()));
         
         for (Boolean b : validList) {
-            if (!b) { flag = false; }
+            System.out.println("create valid: " +flag);
+            if (!b) { 
+               flag = false;
+            }
         }
         return flag;
     }
-    
 }
