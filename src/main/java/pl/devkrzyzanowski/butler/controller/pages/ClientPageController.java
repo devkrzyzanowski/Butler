@@ -31,7 +31,8 @@ public class ClientPageController implements Initializable {
     @FXML private TableView<Client> clientTableView;
     @FXML private TableColumn<Client, String> firstName, lastName, city, street,
             email;
-    @FXML private TableColumn<Client, Integer> homeNumber, flatNumber, contactPhoneNumber, zipCode;
+    @FXML private TableColumn<Client, Integer> homeNumber, flatNumber,
+            contactPhoneNumber, zipCode;
     private Database db;
 
     @Override
@@ -54,8 +55,9 @@ public class ClientPageController implements Initializable {
     }
     
         @FXML private void openAddClientDialog(ActionEvent event) throws IOException{
-        MainApp.stageManager.changeStage((Stage) ((Node) event.getSource())
-                .getScene().getWindow(), "/butler/view/dialogs/addClientDialog.fxml");
+        MainApp.stageManager.addModalStageWithoutMaximize((Stage) ((Node) event.getSource())
+                .getScene().getWindow(), "/fxml/dialogs/addClientDialog.fxml");
+        
     }
         
 }
